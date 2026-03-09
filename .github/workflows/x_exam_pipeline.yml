@@ -5,6 +5,10 @@ on:
     - cron: '0 * * * *' # Every hour
   workflow_dispatch:
 
+concurrency:
+  group: x-exam-research
+  cancel-in-progress: false
+
 jobs:
   run-inference:
     runs-on: ubuntu-latest
