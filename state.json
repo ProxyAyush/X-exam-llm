@@ -1,0 +1,16 @@
+{
+  "current_dataset": "TruthfulQA",
+  "current_model": "llama-3.3-70b-versatile",
+  "current_index": 0,
+  "datasets": {
+    "TruthfulQA": {"index": 0, "total": 0},
+    "HaluEval": {"index": 0, "total": 0},
+    "MMLU": {"index": 0, "total": 0},
+    "GSM8K": {"index": 0, "total": 0},
+    "MedQA": {"index": 0, "total": 0},
+    "MedMCQA": {"index": 0, "total": 0},
+    "PubMedQA": {"index": 0, "total": 0}
+  },
+  "total_compute_minutes": 0,
+  "status": "INITIALIZED"
+}

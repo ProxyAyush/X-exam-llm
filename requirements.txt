@@ -1,0 +1,10 @@
+groq
+datasets
+pandas
+scipy
+scikit-learn
+jinja2
+matplotlib
+seaborn
+tqdm
+python-dotenv
