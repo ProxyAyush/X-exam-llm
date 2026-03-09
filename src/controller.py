@@ -158,6 +158,7 @@ class XExamController:
                 break
             
             item = dataset[i]
+            print(f"[{ds_info['name']}] Processing item {i}/{len(dataset)}...")
             # Standardizing query extraction
             if ds_info['name'] == "truthful_qa":
                 query = item.get('question')
