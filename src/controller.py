@@ -157,7 +157,15 @@ class XExamController:
             
             item = dataset[i]
             # Standardizing query extraction
-            query = item.get('question') or item.get('query') or str(item)
+            if ds_info['name'] == "truthful_qa":
+                query = item.get('question')
+            elif ds_info['name'] == "gsm8k":
+                query = item.get('question')
+            elif ds_info['name'] == "medmcqa":
+                options = f"A) {item.get('opa')}\nB) {item.get('opb')}\nC) {item.get('opc')}\nD) {item.get('opd')}"
+                query = f"{item.get('question')}\nOptions:\n{options}"
+            else:
+                query = item.get('question') or item.get('query') or str(item)
             
             result = self.run_x_exam_loop(query, self.state["current_model"])
             if result:
