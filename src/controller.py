@@ -156,6 +156,14 @@ class XExamController:
         }
 
     def process_all(self):
+        # 1. Global Cooldown Check (Smart Sleep)
+        last_exhausted = self.state.get("last_all_models_exhausted_at")
+        if last_exhausted:
+            elapsed_hours = (time.time() - last_exhausted) / 3600
+            if elapsed_hours < 20:
+                print(f"Smart Sleep Active: All models were exhausted {elapsed_hours:.2f}h ago. Skipping this run to save minutes.")
+                return
+
         if self.state["total_compute_seconds"] > 1000 * 60:
             print("1000-minute limit reached. Stopping research project.")
             return
@@ -200,10 +208,14 @@ class XExamController:
                 if result:
                     self.save_result(ds_info['name'], result)
                     ds_info['index'] = i + 1
+                    # Clear any existing exhaustion timestamp if success
+                    if "last_all_models_exhausted_at" in self.state:
+                        del self.state["last_all_models_exhausted_at"]
                     self.save_state()
                 else:
                     if len(self.exhausted_models) == len(MODEL_FALLBACK_LIST):
                         print("Terminating run: All models exhausted.")
+                        self.state["last_all_models_exhausted_at"] = time.time()
                         self.save_state()
                         return
 
