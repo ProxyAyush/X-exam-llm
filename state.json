@@ -1,16 +1,31 @@
 {
-  "current_dataset": "TruthfulQA",
+  "current_dataset_idx": 0,
   "current_model": "llama-3.3-70b-versatile",
-  "current_index": 0,
-  "datasets": {
-    "TruthfulQA": {"index": 0, "total": 0},
-    "HaluEval": {"index": 0, "total": 0},
-    "MMLU": {"index": 0, "total": 0},
-    "GSM8K": {"index": 0, "total": 0},
-    "MedQA": {"index": 0, "total": 0},
-    "MedMCQA": {"index": 0, "total": 0},
-    "PubMedQA": {"index": 0, "total": 0}
-  },
-  "total_compute_minutes": 0,
-  "status": "INITIALIZED"
+  "total_compute_seconds": 0,
+  "datasets": [
+    {
+      "name": "truthful_qa",
+      "config": "multiple_choice",
+      "split": "validation",
+      "index": 0
+    },
+    {
+      "name": "HaluEval",
+      "config": null,
+      "split": "train",
+      "index": 0
+    },
+    {
+      "name": "gsm8k",
+      "config": "main",
+      "split": "test",
+      "index": 0
+    },
+    {
+      "name": "medmcqa",
+      "config": null,
+      "split": "validation",
+      "index": 0
+    }
+  ]
 }
