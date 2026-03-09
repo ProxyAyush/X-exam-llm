@@ -3,9 +3,9 @@ import json
 import time
 import argparse
 import re
+import pandas as pd
 from datetime import datetime
 from groq import Groq
-from datasets import load_dataset
 from tqdm import tqdm
 
 # Rate limit configurations (as of March 2026)
@@ -143,9 +143,11 @@ class XExamController:
             return
 
         ds_info = self.state["datasets"][self.state["current_dataset_idx"]]
-        print(f"Loading {ds_info['name']}...")
+        print(f"Loading {ds_info['name']} from {ds_info['file']}...")
         try:
-            dataset = load_dataset(ds_info['name'], ds_info['config'], split=ds_info['split'], trust_remote_code=True)
+            df = pd.read_parquet(ds_info['file'])
+            # Convert to list of dicts to mimic dataset behaviour
+            dataset = df.to_dict(orient='records')
         except Exception as e:
             print(f"Failed to load dataset {ds_info['name']}: {e}")
             return
@@ -164,6 +166,11 @@ class XExamController:
             elif ds_info['name'] == "medmcqa":
                 options = f"A) {item.get('opa')}\nB) {item.get('opb')}\nC) {item.get('opc')}\nD) {item.get('opd')}"
                 query = f"{item.get('question')}\nOptions:\n{options}"
+            elif ds_info['name'] == "medqa":
+                options = json.dumps(item.get('options', {}))
+                query = f"{item.get('question')}\nOptions:\n{options}"
+            elif ds_info['name'] == "HaluEval":
+                query = item.get('question') or item.get('query') or str(item)
             else:
                 query = item.get('question') or item.get('query') or str(item)
             

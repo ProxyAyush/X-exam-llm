@@ -1,6 +1,6 @@
 groq
-datasets
 pandas
+pyarrow
 scipy
 scikit-learn
 jinja2

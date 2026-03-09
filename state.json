@@ -5,26 +5,27 @@
   "datasets": [
     {
       "name": "truthful_qa",
-      "config": "multiple_choice",
-      "split": "validation",
+      "file": "data/truthful_qa.parquet",
       "index": 0
     },
     {
       "name": "HaluEval",
-      "config": null,
-      "split": "train",
+      "file": "data/HaluEval.parquet",
       "index": 0
     },
     {
       "name": "gsm8k",
-      "config": "main",
-      "split": "test",
+      "file": "data/gsm8k.parquet",
       "index": 0
     },
     {
       "name": "medmcqa",
-      "config": null,
-      "split": "validation",
+      "file": "data/medmcqa.parquet",
+      "index": 0
+    },
+    {
+      "name": "medqa",
+      "file": "data/medqa.parquet",
       "index": 0
     }
   ]
