@@ -38,6 +38,7 @@ class XExamController:
         self.state_path = state_path
         self.results_dir = results_dir
         self.load_state()
+        self.total_seconds_at_start = self.state.get("total_compute_seconds", 0)
         
         # Load multiple API keys for rotation
         self.api_keys = [
@@ -73,7 +74,7 @@ class XExamController:
             }
 
     def save_state(self):
-        self.state["total_compute_seconds"] += (time.time() - self.start_time)
+        self.state["total_compute_seconds"] = self.total_seconds_at_start + (time.time() - self.start_time)
         with open(self.state_path, 'w') as f:
             json.dump(self.state, f, indent=2)
 
