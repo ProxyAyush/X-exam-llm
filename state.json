@@ -1,6 +1,6 @@
 {
   "current_dataset_idx": 0,
-  "current_model": "llama-3.1-8b-instant",
+  "current_model": "llama-3.3-70b-versatile",
   "total_compute_seconds": 1474.4707753658295,
   "datasets": [
     {
@@ -28,6 +28,5 @@
       "file": "data/medqa.parquet",
       "index": 0
     }
-  ],
-  "last_all_models_exhausted_at": 1773121331.3310804
+  ]
 }
