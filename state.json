@@ -1,12 +1,12 @@
 {
   "current_dataset_idx": 0,
-  "current_model": "qwen/qwen3-32b",
-  "total_compute_seconds": 20215.833426952362,
+  "current_model": "llama-3.1-8b-instant",
+  "total_compute_seconds": 42496.26222395897,
   "datasets": [
     {
       "name": "truthful_qa",
       "file": "data/truthful_qa.parquet",
-      "index": 76
+      "index": 120
     },
     {
       "name": "HaluEval",
@@ -29,5 +29,5 @@
       "index": 0
     }
   ],
-  "last_all_models_exhausted_at": 1773135994.2413416
+  "last_all_models_exhausted_at": 1773146942.4182868
 }
