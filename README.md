@@ -39,9 +39,9 @@ This project is an autonomous, end-to-end scientific operation hosted entirely o
 | Llama 3.1 8B | 30 | 12k | 500k | Efficiency Testing |
 
 ## 📊 Evaluation Suite
-We evaluate X-Exam across several core and specialized medical benchmarks:
-- **Reasoning:** TruthfulQA, HaluEval, MMLU, GSM8K.
-- **Clinical:** MedQA (USMLE), MedMCQA, PubMedQA.
+We evaluate X-Exam across several core and specialized medical benchmarks. Datasets are stored locally in `.parquet` format for maximum reliability:
+- **Reasoning:** TruthfulQA, HaluEval, GSM8K.
+- **Clinical:** MedQA (USMLE), MedMCQA.
 
 ## 🛠️ Repository Structure
 - `src/`: Core Python modules for inference and analysis.
