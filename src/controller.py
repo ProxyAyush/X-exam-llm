@@ -189,8 +189,9 @@ class XExamController:
                 print(f"Smart Sleep Active: All models/keys were exhausted {elapsed_hours:.2f}h ago. Skipping this run to save minutes.")
                 return
 
-        if self.state["total_compute_seconds"] > 1000 * 60:
-            print("1000-minute limit reached. Stopping research project.")
+        max_minutes = self.state.get("max_compute_minutes", 1000)
+        if self.state["total_compute_seconds"] > max_minutes * 60:
+            print(f"{max_minutes}-minute limit reached. Stopping research project.")
             return
 
         while self.state["current_dataset_idx"] < len(self.state["datasets"]):
