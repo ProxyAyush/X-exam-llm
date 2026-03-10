@@ -1,13 +1,13 @@
 {
   "current_dataset_idx": 0,
-  "current_model": "llama-3.3-70b-versatile",
-  "total_compute_seconds": 0,
+  "current_model": "llama-3.1-8b-instant",
+  "total_compute_seconds": 3004.8880915641785,
   "max_compute_minutes": 600,
   "datasets": [
     {
       "name": "truthful_qa",
       "file": "data/truthful_qa.parquet",
-      "index": 342
+      "index": 547
     },
     {
       "name": "HaluEval",
