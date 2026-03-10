@@ -160,7 +160,7 @@ class XExamController:
         last_exhausted = self.state.get("last_all_models_exhausted_at")
         if last_exhausted:
             elapsed_hours = (time.time() - last_exhausted) / 3600
-            if elapsed_hours < 2: # Try every 2 hours
+            if elapsed_hours < 12: # Try every 12 hours
                 print(f"Smart Sleep Active: All models were exhausted {elapsed_hours:.2f}h ago. Skipping this run to save minutes.")
                 return
 
