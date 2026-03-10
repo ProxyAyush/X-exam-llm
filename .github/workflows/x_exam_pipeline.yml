@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for rebase
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -34,14 +36,23 @@ jobs:
         run: |
           python -u src/controller.py
 
-      - name: Pull latest changes
+      - name: Robust Save to GitHub
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main
-
-      - name: Commit and Push Changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Auto-update results and state [skip ci]"
-          file_pattern: 'results/* state.json'
+          
+          # Stage changes
+          git add results/* state.json
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Auto-update research data [skip ci]"
+            
+            # Use aggressive rebase to force the save through
+            # This handles cases where other runners or users updated the repo
+            for i in {1..5}; do
+              git pull --rebase origin main && git push origin main && break || sleep 10
+            done
+          fi
