@@ -38,7 +38,17 @@ class XExamController:
         self.state_path = state_path
         self.results_dir = results_dir
         self.load_state()
-        self.client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+        
+        # Load multiple API keys for rotation
+        self.api_keys = [
+            os.environ.get("GROQ_API_KEY"),
+            os.environ.get("GROQ_API_KEY_AYUSHI"),
+            os.environ.get("GROQ_API_KEY_AKAAKA")
+        ]
+        self.api_keys = [k for k in self.api_keys if k] # Filter out None
+        self.current_key_idx = 0
+        
+        self.client = Groq(api_key=self.api_keys[self.current_key_idx])
         self.request_times = {model: [] for model in RATE_LIMITS}
         self.exhausted_models = set()
         self.start_time = time.time()
@@ -78,6 +88,18 @@ class XExamController:
             print(f"RPM limit reached for {model}, sleeping for {sleep_time:.2f}s")
             time.sleep(max(0, sleep_time))
 
+    def rotate_key(self):
+        self.current_key_idx += 1
+        if self.current_key_idx < len(self.api_keys):
+            print(f"Rotating to API Key {self.current_key_idx + 1}/{len(self.api_keys)}")
+            self.client = Groq(api_key=self.api_keys[self.current_key_idx])
+            return True
+        else:
+            print("All API keys exhausted for the current model.")
+            self.current_key_idx = 0 # Reset for the next model
+            self.client = Groq(api_key=self.api_keys[self.current_key_idx])
+            return False
+
     def switch_model(self):
         current = self.state["current_model"]
         self.exhausted_models.add(current)
@@ -86,7 +108,7 @@ class XExamController:
                 print(f"Switching from {current} to {model} due to rate limits.")
                 self.state["current_model"] = model
                 return True
-        print("All models exhausted for today.")
+        print("All models and all keys exhausted for today.")
         return False
 
     def call_groq(self, model, prompt, system_prompt="You are a helpful assistant."):
@@ -107,8 +129,11 @@ class XExamController:
             
             if "rate limit" in err_msg or "429" in err_msg:
                 if "tokens per day" in err_msg or "tpd" in err_msg:
-                    if self.switch_model():
-                        # Retry once with new model
+                    if self.rotate_key():
+                        # Try again with same model, new key
+                        return self.call_groq(model, prompt, system_prompt)
+                    elif self.switch_model():
+                        # Try again with new model, first key
                         return self.call_groq(self.state["current_model"], prompt, system_prompt)
                 else:
                     print("Minute rate limit hit, sleeping 30s...")
@@ -127,7 +152,7 @@ class XExamController:
         gen_response, t1 = self.call_groq(model, query, gen_system)
         if not gen_response: return None
         
-        # In case model switched mid-loop, use updated model for subsequent calls
+        # model might have switched during call_groq
         model = self.state["current_model"]
         assertion = self.extract_tag(gen_response, "assertion")
         history = [{"role": "generator", "content": gen_response, "assertion": assertion}]
@@ -160,8 +185,8 @@ class XExamController:
         last_exhausted = self.state.get("last_all_models_exhausted_at")
         if last_exhausted:
             elapsed_hours = (time.time() - last_exhausted) / 3600
-            if elapsed_hours < 12: # Try every 12 hours
-                print(f"Smart Sleep Active: All models were exhausted {elapsed_hours:.2f}h ago. Skipping this run to save minutes.")
+            if elapsed_hours < 4: # UPDATED: Try every 4 hours
+                print(f"Smart Sleep Active: All models/keys were exhausted {elapsed_hours:.2f}h ago. Skipping this run to save minutes.")
                 return
 
         if self.state["total_compute_seconds"] > 1000 * 60:
@@ -214,7 +239,7 @@ class XExamController:
                     self.save_state()
                 else:
                     if len(self.exhausted_models) == len(MODEL_FALLBACK_LIST):
-                        print("Terminating run: All models exhausted.")
+                        print("Terminating run: All models and keys exhausted.")
                         self.state["last_all_models_exhausted_at"] = time.time()
                         self.save_state()
                         return

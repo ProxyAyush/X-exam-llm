@@ -33,6 +33,8 @@ jobs:
       - name: Run X-Exam Controller
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_API_KEY_AYUSHI: ${{ secrets.GROQ_API_KEY_AYUSHI }}
+          GROQ_API_KEY_AKAAKA: ${{ secrets.GROQ_API_KEY_AKAAKA }}
         run: |
           python -u src/controller.py
 
