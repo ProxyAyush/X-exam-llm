@@ -1,7 +1,7 @@
 {
   "current_dataset_idx": 1,
-  "current_model": "llama-3.1-8b-instant",
-  "total_compute_seconds": 24235.251888036728,
+  "current_model": "qwen/qwen3-32b",
+  "total_compute_seconds": 25738.911514520645,
   "max_compute_minutes": 600,
   "datasets": [
     {
@@ -12,7 +12,7 @@
     {
       "name": "HaluEval",
       "file": "data/HaluEval.parquet",
-      "index": 971
+      "index": 1086
     },
     {
       "name": "gsm8k",
@@ -29,5 +29,6 @@
       "file": "data/medqa.parquet",
       "index": 0
     }
-  ]
+  ],
+  "last_all_models_exhausted_at": 1773268995.3293319
 }
