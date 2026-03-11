@@ -201,17 +201,19 @@ class XExamController:
             
             try:
                 df = pd.read_parquet(ds_info['file'])
+                # Scientific Sampling: 2000 items max, deterministic random state
+                if len(df) > MAX_ITEMS_PER_DATASET:
+                    df = df.sample(n=MAX_ITEMS_PER_DATASET, random_state=42).reset_index(drop=True)
+                
                 dataset = df.to_dict(orient='records')
             except Exception as e:
                 print(f"Failed to load dataset {ds_info['name']}: {e}")
                 self.state["current_dataset_idx"] += 1
                 continue
 
-            # Limit dataset size
-            effective_len = min(len(dataset), MAX_ITEMS_PER_DATASET)
-            print(f"Processing dataset: {ds_info['name']} (Model: {self.state['current_model']}, Items: {ds_info['index']}/{effective_len})")
+            print(f"Processing dataset: {ds_info['name']} (Model: {self.state['current_model']}, Progress: {ds_info['index']}/{len(dataset)})")
 
-            for i in range(ds_info['index'], effective_len):
+            for i in range(ds_info['index'], len(dataset)):
                 if time.time() - self.start_time > self.max_runtime_seconds:
                     print("Approaching runtime limit for this session. Saving state.")
                     self.save_state()
