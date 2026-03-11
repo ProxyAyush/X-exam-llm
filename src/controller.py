@@ -195,9 +195,9 @@ class XExamController:
             print(f"{max_minutes}-minute limit reached. Stopping research project.")
             return
 
+        MAX_ITEMS_PER_DATASET = 2000
         while self.state["current_dataset_idx"] < len(self.state["datasets"]):
             ds_info = self.state["datasets"][self.state["current_dataset_idx"]]
-            print(f"Processing dataset: {ds_info['name']} (Model: {self.state['current_model']})")
             
             try:
                 df = pd.read_parquet(ds_info['file'])
@@ -207,7 +207,11 @@ class XExamController:
                 self.state["current_dataset_idx"] += 1
                 continue
 
-            for i in range(ds_info['index'], len(dataset)):
+            # Limit dataset size
+            effective_len = min(len(dataset), MAX_ITEMS_PER_DATASET)
+            print(f"Processing dataset: {ds_info['name']} (Model: {self.state['current_model']}, Items: {ds_info['index']}/{effective_len})")
+
+            for i in range(ds_info['index'], effective_len):
                 if time.time() - self.start_time > self.max_runtime_seconds:
                     print("Approaching runtime limit for this session. Saving state.")
                     self.save_state()
