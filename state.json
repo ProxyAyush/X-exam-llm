@@ -1,7 +1,7 @@
 {
   "current_dataset_idx": 1,
-  "current_model": "llama-3.3-70b-versatile",
-  "total_compute_seconds": 31768.757553577423,
+  "current_model": "llama-3.1-8b-instant",
+  "total_compute_seconds": 33407.848037958145,
   "max_compute_minutes": 600,
   "datasets": [
     {
@@ -12,7 +12,7 @@
     {
       "name": "HaluEval",
       "file": "data/HaluEval.parquet",
-      "index": 1468
+      "index": 1553
     },
     {
       "name": "gsm8k",
@@ -29,5 +29,6 @@
       "file": "data/medqa.parquet",
       "index": 0
     }
-  ]
+  ],
+  "last_all_models_exhausted_at": 1773299232.5610466
 }
