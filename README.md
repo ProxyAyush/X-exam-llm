@@ -1,6 +1,15 @@
 # X-Exam: Adversarial Reasoning for Factual Reliability in LLMs
 
-[![X-Exam Adversarial Reasoning Pipeline](https://github.com/ProxyAyush/X-exam-llm/actions/workflows/x_exam_pipeline.yml/badge.svg)](https://github.com/ProxyAyush/X-exam-llm/actions/workflows/x_exam_pipeline.yml)
+<p align="left">
+  <img src="https://img.shields.io/github/actions/workflow/status/ProxyAyush/X-exam-llm/x_exam_pipeline.yml?label=Pipeline&logo=github&style=flat-square" alt="Pipeline Status">
+  <img src="https://img.shields.io/badge/Research-Autonomous-blue?style=flat-square&logo=openai" alt="Research Status">
+  <img src="https://img.shields.io/badge/Target-NeurIPS%202025-orange?style=flat-square" alt="Target Venue">
+  <img src="https://img.shields.io/github/license/ProxyAyush/X-exam-llm?style=flat-square" alt="License">
+  <img src="https://img.shields.io/github/repo-size/ProxyAyush/X-exam-llm?style=flat-square" alt="Repo Size">
+  <img src="https://img.shields.io/github/last-commit/ProxyAyush/X-exam-llm?style=flat-square" alt="Last Commit">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square&logo=python" alt="Python Version">
+  <img src="https://img.shields.io/badge/Compute-Groq-green?style=flat-square" alt="Compute Engine">
+</p>
 
 ## 📌 Project Vision
 **X-Exam** is an autonomous research operation designed to challenge the status quo of Large Language Model (LLM) verification. Traditional "self-correction" methods (like Self-Refine or Reflexion) often suffer from **confirmation bias**, where a model simply agrees with its own hallucinations.
