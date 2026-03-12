@@ -3,7 +3,6 @@
 <p align="left">
   <img src="https://img.shields.io/github/actions/workflow/status/ProxyAyush/X-exam-llm/x_exam_pipeline.yml?label=Pipeline&logo=github&style=flat-square" alt="Pipeline Status">
   <img src="https://img.shields.io/badge/Research-Autonomous-blue?style=flat-square&logo=openai" alt="Research Status">
-  <img src="https://img.shields.io/badge/Target-NeurIPS%202025-orange?style=flat-square" alt="Target Venue">
   <img src="https://img.shields.io/github/license/ProxyAyush/X-exam-llm?style=flat-square" alt="License">
   <img src="https://img.shields.io/github/repo-size/ProxyAyush/X-exam-llm?style=flat-square" alt="Repo Size">
   <img src="https://img.shields.io/github/last-commit/ProxyAyush/X-exam-llm?style=flat-square" alt="Last Commit">
