@@ -1,7 +1,7 @@
 {
   "current_dataset_idx": 2,
-  "current_model": "llama-3.1-8b-instant",
-  "total_compute_seconds": 46508.73929691315,
+  "current_model": "llama-3.3-70b-versatile",
+  "total_compute_seconds": 49516.409157037735,
   "max_compute_minutes": 1200,
   "datasets": [
     {
@@ -17,7 +17,7 @@
     {
       "name": "gsm8k",
       "file": "data/gsm8k.parquet",
-      "index": 317
+      "index": 547
     },
     {
       "name": "medmcqa",
