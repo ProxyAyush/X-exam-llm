@@ -1,7 +1,7 @@
 {
   "current_dataset_idx": 2,
-  "current_model": "qwen/qwen3-32b",
-  "total_compute_seconds": 54014.180931806564,
+  "current_model": "llama-3.1-8b-instant",
+  "total_compute_seconds": 56162.32332277298,
   "max_compute_minutes": 1200,
   "datasets": [
     {
@@ -17,7 +17,7 @@
     {
       "name": "gsm8k",
       "file": "data/gsm8k.parquet",
-      "index": 854
+      "index": 948
     },
     {
       "name": "medmcqa",
@@ -29,5 +29,6 @@
       "file": "data/medqa.parquet",
       "index": 0
     }
-  ]
+  ],
+  "last_all_models_exhausted_at": 1773407282.7240217
 }
