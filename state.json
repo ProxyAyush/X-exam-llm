@@ -1,7 +1,7 @@
 {
-  "current_dataset_idx": 2,
-  "current_model": "llama-3.1-8b-instant",
-  "total_compute_seconds": 60673.48969364166,
+  "current_dataset_idx": 3,
+  "current_model": "qwen/qwen3-32b",
+  "total_compute_seconds": 63675.96655154228,
   "max_compute_minutes": 1200,
   "datasets": [
     {
@@ -17,18 +17,17 @@
     {
       "name": "gsm8k",
       "file": "data/gsm8k.parquet",
-      "index": 1222
+      "index": 1319
     },
     {
       "name": "medmcqa",
       "file": "data/medmcqa.parquet",
-      "index": 0
+      "index": 150
     },
     {
       "name": "medqa",
       "file": "data/medqa.parquet",
       "index": 0
     }
-  ],
-  "last_all_models_exhausted_at": 1773427922.444437
+  ]
 }
