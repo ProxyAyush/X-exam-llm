@@ -2,7 +2,7 @@
   "current_dataset_idx": 3,
   "current_model": "qwen/qwen3-32b",
   "total_compute_seconds": 72183.91974234581,
-  "max_compute_minutes": 1200,
+  "max_compute_minutes": 1800,
   "datasets": [
     {
       "name": "truthful_qa",
