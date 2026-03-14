@@ -1,7 +1,7 @@
 {
   "current_dataset_idx": 3,
-  "current_model": "llama-3.1-8b-instant",
-  "total_compute_seconds": 72657.27258467674,
+  "current_model": "llama-3.3-70b-versatile",
+  "total_compute_seconds": 75658.90557408333,
   "max_compute_minutes": 1800,
   "datasets": [
     {
@@ -22,13 +22,12 @@
     {
       "name": "medmcqa",
       "file": "data/medmcqa.parquet",
-      "index": 615
+      "index": 845
     },
     {
       "name": "medqa",
       "file": "data/medqa.parquet",
       "index": 0
     }
-  ],
-  "last_all_models_exhausted_at": 1773480639.3219635
+  ]
 }
