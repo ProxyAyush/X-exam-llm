@@ -68,6 +68,7 @@ To ensure results are statistically significant and free from ordering bias, we 
 ### 📊 Evaluation Benchmarks
 We focus on high-stakes domains where hallucinations are most dangerous:
 - **Clinical/Medical:** MedQA (USMLE), MedMCQA.
+- **Legal Reasoning:** CaseHOLD, Law Stack Exchange.
 - **Reasoning/Logic:** TruthfulQA, HaluEval, GSM8K.
 
 ---
@@ -102,7 +103,7 @@ sequenceDiagram
 ## 📜 Roadmap & Current Status
 - [x] **Phase 1:** Repository Scaffolding & MLOps setup.
 - [x] **Phase 2:** Dataset ingestion & deterministic sampling implementation.
-- [x] **Phase 3:** Large-scale inference (Currently Processing `truthful_qa`).
+- [x] **Phase 3:** Large-scale inference (Currently Processing `HaluEval`).
 - [ ] **Phase 4:** Statistical analysis (ECE Calculation, Brier Scores).
 - [ ] **Phase 5:** LaTeX Manuscript Synthesis for NeurIPS.
 

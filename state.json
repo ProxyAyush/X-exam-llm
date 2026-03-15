@@ -1,6 +1,6 @@
 {
   "current_dataset_idx": 4,
-  "current_model": "qwen/qwen3-32b",
+  "current_model": "llama-3.3-70b-versatile",
   "total_compute_seconds": 99762.76863193512,
   "max_compute_minutes": 1800,
   "datasets": [
@@ -28,6 +28,16 @@
       "name": "medqa",
       "file": "data/medqa.parquet",
       "index": 354
+    },
+    {
+      "name": "case_hold",
+      "file": "data/case_hold.parquet",
+      "index": 0
+    },
+    {
+      "name": "law_stack_exchange",
+      "file": "data/law_stack_exchange.parquet",
+      "index": 0
     }
   ],
   "last_all_models_exhausted_at": 1773601646.6443725

@@ -13,7 +13,9 @@ DATASETS = [
     {"name": "medmcqa", "url": "https://huggingface.co/datasets/openlifescienceai/medmcqa/resolve/refs%2Fconvert%2Fparquet/default/validation/0000.parquet"},
     {"name": "medqa", "url": "https://huggingface.co/datasets/openlifescienceai/medqa/resolve/refs%2Fconvert%2Fparquet/default/test/0000.parquet"},
     {"name": "pubmed_qa", "url": "https://huggingface.co/datasets/qiaojin/PubMedQA/resolve/refs/convert/parquet/pqa_labeled/train-00000-of-00001.parquet"},
-    {"name": "HaluEval", "url": "https://huggingface.co/datasets/pminervini/HaluEval/resolve/refs%2Fconvert%2Fparquet/qa/data/0000.parquet"}
+    {"name": "HaluEval", "url": "https://huggingface.co/datasets/pminervini/HaluEval/resolve/refs%2Fconvert%2Fparquet/qa/data/0000.parquet"},
+    {"name": "case_hold", "url": "https://huggingface.co/datasets/coastalcph/lex_glue/resolve/refs%2Fconvert%2Fparquet/case_hold/test/0000.parquet"},
+    {"name": "law_stack_exchange", "url": "https://huggingface.co/datasets/jonathanli/law-stack-exchange/resolve/refs%2Fconvert%2Fparquet/default/train/0000.parquet"}
 ]
 
 def download_file(url, filename):

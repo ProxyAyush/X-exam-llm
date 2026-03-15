@@ -233,6 +233,11 @@ class XExamController:
                 elif ds_info['name'] == "medqa":
                     options = json.dumps(item.get('options', {}))
                     query = f"{item.get('question')}\nOptions:\n{options}"
+                elif ds_info['name'] == "case_hold":
+                    options = "\n".join([f"{chr(65+i)}) {opt}" for i, opt in enumerate(item.get('endings', []))])
+                    query = f"Legal Context: {item.get('context')}\nWhich of the following is the correct legal holding for this case?\nOptions:\n{options}"
+                elif ds_info['name'] == "law_stack_exchange":
+                    query = f"Title: {item.get('title')}\nQuestion: {item.get('body')}"
                 else:
                     query = item.get('question') or item.get('query') or str(item)
                 
