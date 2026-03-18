@@ -2,7 +2,7 @@
   "current_dataset_idx": 5,
   "current_model": "llama-3.1-8b-instant",
   "total_compute_seconds": 144473.04078626633,
-  "max_compute_minutes": 2400,
+  "max_compute_minutes": 3000,
   "datasets": [
     {
       "name": "truthful_qa",
