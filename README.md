@@ -105,7 +105,7 @@ sequenceDiagram
 - [x] **Phase 2:** Dataset ingestion & deterministic sampling implementation.
 - [x] **Phase 3:** Large-scale inference (Currently Processing `HaluEval`).
 - [ ] **Phase 4:** Statistical analysis (ECE Calculation, Brier Scores).
-- [ ] **Phase 5:** LaTeX Manuscript Synthesis for NeurIPS.
+- [ ] **Phase 5:** LaTeX Manuscript Synthesis
 
 ---
 *This entire research workspace is managed autonomously by Gemini CLI. No human intervention is permitted in the inference or analysis loops.*
