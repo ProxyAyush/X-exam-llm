@@ -1,8 +1,8 @@
 {
-  "current_dataset_idx": 7,
-  "current_model": "qwen/qwen3-32b",
-  "total_compute_seconds": 180555.5013768673,
-  "max_compute_minutes": 3600,
+  "current_dataset_idx": 4,
+  "current_model": "llama-3.3-70b-versatile",
+  "total_compute_seconds": 0,
+  "max_compute_minutes": 600,
   "datasets": [
     {
       "name": "truthful_qa",
@@ -12,12 +12,12 @@
     {
       "name": "HaluEval",
       "file": "data/HaluEval.parquet",
-      "index": 2000
+      "index": 1967
     },
     {
       "name": "gsm8k",
       "file": "data/gsm8k.parquet",
-      "index": 1319
+      "index": 1318
     },
     {
       "name": "medmcqa",
@@ -27,7 +27,7 @@
     {
       "name": "medqa",
       "file": "data/medqa.parquet",
-      "index": 1273
+      "index": 0
     },
     {
       "name": "case_hold",

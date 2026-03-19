@@ -231,8 +231,15 @@ class XExamController:
                     options = f"A) {item.get('opa')}\nB) {item.get('opb')}\nC) {item.get('opc')}\nD) {item.get('opd')}"
                     query = f"{item.get('question')}\nOptions:\n{options}"
                 elif ds_info['name'] == "medqa":
-                    options = json.dumps(item.get('options', {}))
-                    query = f"{item.get('question')}\nOptions:\n{options}"
+                    data_dict = item.get('data', {})
+                    if isinstance(data_dict, str): # In case it's stringified JSON
+                        try: data_dict = json.loads(data_dict)
+                        except: data_dict = {}
+                    
+                    question = data_dict.get('Question', 'N/A')
+                    options = data_dict.get('Options', {})
+                    options_str = "\n".join([f"{k}) {v}" for k, v in options.items()])
+                    query = f"Medical Question: {question}\nOptions:\n{options_str}"
                 elif ds_info['name'] == "case_hold":
                     options = "\n".join([f"{chr(65+i)}) {opt}" for i, opt in enumerate(item.get('endings', []))])
                     query = f"Legal Context: {item.get('context')}\nWhich of the following is the correct legal holding for this case?\nOptions:\n{options}"
