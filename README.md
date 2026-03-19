@@ -100,6 +100,18 @@ sequenceDiagram
 
 ---
 
+## 🔭 Future Horizons & Discoveries
+X-Exam is more than a benchmark; it is a **discovery engine**. The interaction data between agents enables several novel research directions:
+
+1.  **Adversarial Robustness Metric (ARM):** A new way to quantify decision reliability based on a model's ability to withstand targeted attacks.
+2.  **Synthetic Correction Datasets:** Mining our `REJECT` trajectories to fine-tune specialized "Verifier Models" that outperform generalist LLMs.
+3.  **Cross-Domain Hallucination Taxonomy:** Mapping the specific failure modes of clinical vs. legal reasoning.
+
+### 🛠️ Discovery Tools:
+- `src/discovery_miner.py`: Automatically extracts the most scientifically interesting "Correction Trajectories" from the raw results.
+
+---
+
 ## 📜 Roadmap & Current Status
 - [x] **Phase 1:** Repository Scaffolding & MLOps setup.
 - [x] **Phase 2:** Dataset ingestion & deterministic sampling implementation.
