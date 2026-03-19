@@ -1,7 +1,7 @@
 {
-  "current_dataset_idx": 6,
-  "current_model": "llama-3.1-8b-instant",
-  "total_compute_seconds": 177777.6632835865,
+  "current_dataset_idx": 7,
+  "current_model": "qwen/qwen3-32b",
+  "total_compute_seconds": 180555.5013768673,
   "max_compute_minutes": 3000,
   "datasets": [
     {
@@ -37,7 +37,7 @@
     {
       "name": "law_stack_exchange",
       "file": "data/law_stack_exchange.parquet",
-      "index": 499
+      "index": 638
     }
   ]
 }
