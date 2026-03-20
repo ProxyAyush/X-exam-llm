@@ -1,7 +1,7 @@
 {
   "current_dataset_idx": 4,
-  "current_model": "qwen/qwen3-32b",
-  "total_compute_seconds": 8690.44991016388,
+  "current_model": "llama-3.1-8b-instant",
+  "total_compute_seconds": 11701.804317712784,
   "max_compute_minutes": 600,
   "datasets": [
     {
@@ -27,7 +27,7 @@
     {
       "name": "medqa",
       "file": "data/medqa.parquet",
-      "index": 384
+      "index": 498
     },
     {
       "name": "case_hold",
@@ -39,6 +39,5 @@
       "file": "data/law_stack_exchange.parquet",
       "index": 638
     }
-  ],
-  "last_all_models_exhausted_at": 1773989681.4415247
+  ]
 }
