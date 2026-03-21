@@ -41,9 +41,14 @@ jobs:
           GROQ_API_KEY_AYUSHI: ${{ secrets.GROQ_API_KEY_AYUSHI }}
           GROQ_API_KEY_AKAAKA: ${{ secrets.GROQ_API_KEY_AKAAKA }}
         run: |
-          if [[ "${{ github.event.inputs.baseline }}" == "true" ]]; then
+          # Check if Phase 3 is complete in state.json
+          PHASE3_DONE=$(python -c "import json; print(json.load(open('state.json'))['current_dataset_idx'] >= 7)")
+          
+          if [[ "${{ github.event.inputs.baseline }}" == "true" ]] || [[ "$PHASE3_DONE" == "True" ]]; then
+            echo "Running in Baseline Mode (Phase 4)"
             python -u src/controller.py --baseline
           else
+            echo "Running in X-Exam Mode (Phase 3)"
             python -u src/controller.py
           fi
 
