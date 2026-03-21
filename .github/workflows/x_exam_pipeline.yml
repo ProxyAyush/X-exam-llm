@@ -58,8 +58,12 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # Stage changes
-          git add results results_baseline state.json state_baseline.json || echo "Some files missing, continuing..."
+          # Stage changes individually to avoid pathspec errors
+          git add results || echo "Results dir missing"
+          git add results_baseline || echo "Baseline dir missing"
+          git add state.json || echo "state.json missing"
+          git add state_baseline.json || echo "state_baseline.json missing"
+          git add analysis || echo "analysis missing"
           
           # Check if there are changes to commit
           if git diff --staged --quiet; then
