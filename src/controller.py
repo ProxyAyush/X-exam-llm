@@ -64,7 +64,6 @@ class XExamController:
             print(f"DEBUG: Rotating to Key Index {self.current_key_idx}")
             self.client = Groq(api_key=self.api_keys[self.current_key_idx])
             return True
-        print("DEBUG: All keys exhausted for this session.")
         return False
 
     def call_groq(self, model, prompt, system_prompt="You are a helpful assistant.", force_model=False):
@@ -92,7 +91,6 @@ class XExamController:
                     self.exhausted_models.add(model)
                     for m in MODEL_FALLBACK_LIST:
                         if m not in self.exhausted_models:
-                            print(f"DEBUG: Switching to Fallback Model: {m}")
                             self.state["current_model"] = m
                             return self.call_groq(m, prompt, system_prompt)
             return None
@@ -100,7 +98,6 @@ class XExamController:
     def process_all(self, baseline=False):
         target_results_dir = self.results_dir if not baseline else "results_baseline"
         
-        # Smart Sleep Check
         last_ex = self.state.get("last_all_models_exhausted_at")
         if last_ex and (time.time() - last_ex) / 3600 < 4:
             print("Smart Sleep Active. Skipping.")
@@ -135,13 +132,11 @@ class XExamController:
                     
                     if force_model: print(f"DEBUG: [ITEM {i}] Strictly Forcing Model: {target_model}")
 
-                    # Single Pass Generator
                     res = self.call_groq(target_model, query, "Expert solver. Wrap assertion in <assertion> tags.", force_model=force_model)
                     
                     if res:
                         match = re.search(r"<assertion>(.*?)</assertion>", res, re.DOTALL | re.IGNORECASE)
                         assertion = match.group(1).strip() if match else res.strip()
-                        
                         output = {
                             "query": query,
                             "final_assertion": assertion,
@@ -149,13 +144,7 @@ class XExamController:
                             "timestamp": datetime.now().isoformat(),
                             "mode": "baseline" if baseline else "x_exam"
                         }
-                        
-                        # Atomic Save
-                        path = os.path.join(target_results_dir, ds['name'].replace("/", "_"))
-                        os.makedirs(path, exist_ok=True)
-                        with open(os.path.join(path, "results.jsonl"), 'a') as f:
-                            f.write(json.dumps(output) + "\n")
-                        
+                        self.save_result(ds['name'], output, target_results_dir, is_first_item=(i == 0))
                         ds['index'] = i + 1
                         self.save_state()
                     else:
@@ -168,6 +157,15 @@ class XExamController:
                 self.save_state()
         finally:
             self.save_state()
+
+    def save_result(self, dataset_name, result, target_dir, is_first_item=False):
+        path = os.path.join(target_dir, dataset_name.replace("/", "_"))
+        os.makedirs(path, exist_ok=True)
+        file_path = os.path.join(path, "results.jsonl")
+        mode = 'w' if is_first_item else 'a'
+        with open(file_path, mode) as f:
+            f.write(json.dumps(result) + "\n")
+        print(f"DEBUG: Result Written ({mode}): {file_path}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
