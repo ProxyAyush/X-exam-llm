@@ -41,15 +41,16 @@ jobs:
           GROQ_API_KEY_AYUSHI: ${{ secrets.GROQ_API_KEY_AYUSHI }}
           GROQ_API_KEY_AKAAKA: ${{ secrets.GROQ_API_KEY_AKAAKA }}
         run: |
-          # Check if Phase 3 is complete in state.json
-          PHASE3_DONE=$(python -c "import json; print(json.load(open('state.json'))['current_dataset_idx'] >= 7)")
+          # 1. Check for missing Phase 3 items
+          python src/identify_missing.py
+          MISSING_COUNT=$(python -c "import json; m=json.load(open('analysis/missing_indices.json')); print(sum(len(v) for v in m.values()))")
           
-          if [[ "${{ github.event.inputs.baseline }}" == "true" ]] || [[ "$PHASE3_DONE" == "True" ]]; then
-            echo "Running in Baseline Mode (Phase 4)"
-            python -u src/controller.py --baseline
+          if [[ "$MISSING_COUNT" -gt 0 ]]; then
+            echo "Phase 3 is INCOMPLETE ($MISSING_COUNT items missing). Starting Backfill."
+            python -u src/backfill_phase3.py
           else
-            echo "Running in X-Exam Mode (Phase 3)"
-            python -u src/controller.py
+            echo "Phase 3 is 100% COMPLETE. Running Phase 4 (Baseline Mode)."
+            python -u src/controller.py --baseline
           fi
 
       - name: Robust Save to GitHub
