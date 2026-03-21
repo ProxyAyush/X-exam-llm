@@ -53,7 +53,7 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
           # Stage changes
-          git add results/* results_baseline/* state.json state_baseline.json
+          git add results results_baseline state.json state_baseline.json || echo "Some files missing, continuing..."
           
           # Check if there are changes to commit
           if git diff --staged --quiet; then
