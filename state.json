@@ -1,5 +1,5 @@
 {
-  "current_dataset_idx": 7,
+  "current_dataset_idx": 3,
   "current_model": "qwen/qwen3-32b",
   "total_compute_seconds": 180555.5013768673,
   "max_compute_minutes": 3600,
@@ -17,27 +17,27 @@
     {
       "name": "gsm8k",
       "file": "data/gsm8k.parquet",
-      "index": 1319
+      "index": 1318
     },
     {
       "name": "medmcqa",
       "file": "data/medmcqa.parquet",
-      "index": 2000
+      "index": 494
     },
     {
       "name": "medqa",
       "file": "data/medqa.parquet",
-      "index": 1273
+      "index": 0
     },
     {
       "name": "case_hold",
       "file": "data/case_hold.parquet",
-      "index": 2000
+      "index": 0
     },
     {
       "name": "law_stack_exchange",
       "file": "data/law_stack_exchange.parquet",
-      "index": 638
+      "index": 0
     }
   ]
 }
