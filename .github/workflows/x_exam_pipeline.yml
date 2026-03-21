@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '0 * * * *' # Every hour
   workflow_dispatch:
+    inputs:
+      baseline:
+        description: 'Run in baseline mode'
+        required: false
+        default: 'false'
 
 concurrency:
   group: x-exam-research
@@ -36,7 +41,11 @@ jobs:
           GROQ_API_KEY_AYUSHI: ${{ secrets.GROQ_API_KEY_AYUSHI }}
           GROQ_API_KEY_AKAAKA: ${{ secrets.GROQ_API_KEY_AKAAKA }}
         run: |
-          python -u src/controller.py
+          if [[ "${{ github.event.inputs.baseline }}" == "true" ]]; then
+            python -u src/controller.py --baseline
+          else
+            python -u src/controller.py
+          fi
 
       - name: Robust Save to GitHub
         run: |
@@ -44,7 +53,7 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
           # Stage changes
-          git add results/* state.json
+          git add results/* results_baseline/* state.json state_baseline.json
           
           # Check if there are changes to commit
           if git diff --staged --quiet; then

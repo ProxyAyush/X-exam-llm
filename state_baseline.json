@@ -1,0 +1,43 @@
+{
+  "current_dataset_idx": 0,
+  "current_model": "llama-3.3-70b-versatile",
+  "total_compute_seconds": 0,
+  "max_compute_minutes": 600,
+  "datasets": [
+    {
+      "name": "truthful_qa",
+      "file": "data/truthful_qa.parquet",
+      "index": 0
+    },
+    {
+      "name": "HaluEval",
+      "file": "data/HaluEval.parquet",
+      "index": 0
+    },
+    {
+      "name": "gsm8k",
+      "file": "data/gsm8k.parquet",
+      "index": 0
+    },
+    {
+      "name": "medmcqa",
+      "file": "data/medmcqa.parquet",
+      "index": 0
+    },
+    {
+      "name": "medqa",
+      "file": "data/medqa.parquet",
+      "index": 0
+    },
+    {
+      "name": "case_hold",
+      "file": "data/case_hold.parquet",
+      "index": 0
+    },
+    {
+      "name": "law_stack_exchange",
+      "file": "data/law_stack_exchange.parquet",
+      "index": 0
+    }
+  ]
+}

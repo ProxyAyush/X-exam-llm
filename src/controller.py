@@ -34,8 +34,8 @@ MODEL_FALLBACK_LIST = [
 ]
 
 class XExamController:
-    def __init__(self, state_path="state.json", results_dir="results"):
-        self.state_path = state_path
+    def __init__(self, state_path=None, results_dir="results"):
+        self.state_path = state_path if state_path else "state.json"
         self.results_dir = results_dir
         self.load_state()
         self.total_seconds_at_start = self.state.get("total_compute_seconds", 0)
@@ -147,7 +147,7 @@ class XExamController:
         match = re.search(f"<{tag}>(.*?)</{tag}>", text, re.DOTALL | re.IGNORECASE)
         return match.group(1).strip() if match else text.strip()
 
-    def run_x_exam_loop(self, query, model, iterations=1):
+    def run_x_exam_loop(self, query, model, iterations=1, baseline=False):
         # 1. Generator
         gen_system = "You are an expert domain solver. Analyze the following query and provide a comprehensive, step-by-step solution. You must enclose your final, definitive assertion within <assertion> tags."
         gen_response, t1 = self.call_groq(model, query, gen_system)
@@ -156,6 +156,17 @@ class XExamController:
         # model might have switched during call_groq
         model = self.state["current_model"]
         assertion = self.extract_tag(gen_response, "assertion")
+        
+        if baseline:
+            return {
+                "query": query,
+                "final_assertion": assertion,
+                "history": [{"role": "generator", "content": gen_response, "assertion": assertion}],
+                "model_used": model,
+                "timestamp": datetime.now().isoformat(),
+                "mode": "baseline"
+            }
+
         history = [{"role": "generator", "content": gen_response, "assertion": assertion}]
         
         # 2. Cross-Examiner
@@ -181,7 +192,10 @@ class XExamController:
             "timestamp": datetime.now().isoformat()
         }
 
-    def process_all(self):
+    def process_all(self, baseline=False):
+        # Use separate directory for baselines
+        current_results_dir = self.results_dir if not baseline else "results_baseline"
+        
         # 1. Global Cooldown Check (Smart Sleep)
         last_exhausted = self.state.get("last_all_models_exhausted_at")
         if last_exhausted:
@@ -248,10 +262,10 @@ class XExamController:
                 else:
                     query = item.get('question') or item.get('query') or str(item)
                 
-                result = self.run_x_exam_loop(query, self.state["current_model"])
+                result = self.run_x_exam_loop(query, self.state["current_model"], baseline=baseline)
                 
                 if result:
-                    self.save_result(ds_info['name'], result)
+                    self.save_result(ds_info['name'], result, target_dir=current_results_dir)
                     ds_info['index'] = i + 1
                     # Clear any existing exhaustion timestamp if success
                     if "last_all_models_exhausted_at" in self.state:
@@ -267,12 +281,18 @@ class XExamController:
             self.state["current_dataset_idx"] += 1
             self.save_state()
 
-    def save_result(self, dataset_name, result):
+    def save_result(self, dataset_name, result, target_dir=None):
+        if target_dir is None: target_dir = self.results_dir
         clean_name = dataset_name.replace("/", "_")
-        os.makedirs(os.path.join(self.results_dir, clean_name), exist_ok=True)
-        with open(os.path.join(self.results_dir, clean_name, "results.jsonl"), 'a') as f:
+        os.makedirs(os.path.join(target_dir, clean_name), exist_ok=True)
+        with open(os.path.join(target_dir, clean_name, "results.jsonl"), 'a') as f:
             f.write(json.dumps(result) + "\n")
 
 if __name__ == "__main__":
-    controller = XExamController()
-    controller.process_all()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--baseline", action="store_true", help="Run in single-pass baseline mode")
+    args = parser.parse_args()
+    
+    state_file = "state_baseline.json" if args.baseline else "state.json"
+    controller = XExamController(state_path=state_file)
+    controller.process_all(baseline=args.baseline)
