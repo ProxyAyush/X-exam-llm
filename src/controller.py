@@ -51,7 +51,20 @@ class XExamController:
         if os.path.exists(self.state_path):
             with open(self.state_path, 'r') as f: self.state = json.load(f)
         else:
-            self.state = {"current_dataset_idx": 0, "current_model": "llama-3.3-70b-versatile", "total_compute_seconds": 0, "datasets": []}
+            self.state = {
+                "current_dataset_idx": 0, 
+                "current_model": "llama-3.3-70b-versatile", 
+                "total_compute_seconds": 0, 
+                "datasets": [
+                    {"name": "truthful_qa", "file": "data/truthful_qa.parquet", "index": 0},
+                    {"name": "HaluEval", "file": "data/HaluEval.parquet", "index": 0},
+                    {"name": "gsm8k", "file": "data/gsm8k.parquet", "index": 0},
+                    {"name": "medmcqa", "file": "data/medmcqa.parquet", "index": 0},
+                    {"name": "medqa", "file": "data/medqa.parquet", "index": 0},
+                    {"name": "case_hold", "file": "data/case_hold.parquet", "index": 0},
+                    {"name": "law_stack_exchange", "file": "data/law_stack_exchange.parquet", "index": 0}
+                ]
+            }
 
     def save_state(self):
         self.state["total_compute_seconds"] = self.total_seconds_at_start + (time.time() - self.start_time)
@@ -91,16 +104,58 @@ class XExamController:
                     self.exhausted_models.add(model)
                     for m in MODEL_FALLBACK_LIST:
                         if m not in self.exhausted_models:
+                            print(f"DEBUG: Switching to Fallback: {m}")
                             self.state["current_model"] = m
                             return self.call_groq(m, prompt, system_prompt)
             return None
 
+    def run_x_exam_loop(self, query, model, iterations=1, baseline=False, force_model=False):
+        # 1. Generator
+        gen_system = "You are an expert domain solver. Provide a step-by-step solution. You must enclose your final assertion within <assertion> tags."
+        res = self.call_groq(model, query, gen_system, force_model=force_model)
+        if not res: return None
+        
+        match = re.search(r"<assertion>(.*?)</assertion>", res, re.DOTALL | re.IGNORECASE)
+        assertion = match.group(1).strip() if match else res.strip()
+        
+        if baseline:
+            return {
+                "query": query,
+                "final_assertion": assertion,
+                "history": [{"role": "generator", "content": res, "assertion": assertion}],
+                "model_used": model,
+                "timestamp": datetime.now().isoformat(),
+                "mode": "baseline"
+            }
+
+        # 2. Adversary (X-Exam Mode Only)
+        history = [{"role": "generator", "content": res, "assertion": assertion}]
+        exam_system = "You are a ruthless, adversarial cross-examiner. Identify flaws in the assertion."
+        critique = self.call_groq(model, f"Query: {query}\nAssertion: {assertion}", exam_system, force_model=force_model)
+        if not critique: return None
+
+        # 3. Judge
+        judge_system = "Output <verdict>ACCEPT</verdict> or <verdict>REJECT</verdict>."
+        verdict_raw = self.call_groq(model, f"Query: {query}\nAssertion: {assertion}\nCritique: {critique}", judge_system, force_model=force_model)
+        if not verdict_raw: return None
+
+        match_v = re.search(r"<verdict>(.*?)</verdict>", verdict_raw, re.DOTALL | re.IGNORECASE)
+        verdict = match_v.group(1).strip() if match_v else "REJECT"
+        history.append({"iteration": 0, "critique": critique, "verdict": verdict})
+
+        return {
+            "query": query,
+            "final_assertion": assertion,
+            "history": history,
+            "model_used": model,
+            "timestamp": datetime.now().isoformat(),
+            "mode": "x_exam"
+        }
+
     def process_all(self, baseline=False):
         target_results_dir = self.results_dir if not baseline else "results_baseline"
-        
         last_ex = self.state.get("last_all_models_exhausted_at")
         if last_ex and (time.time() - last_ex) / 3600 < 4:
-            print("Smart Sleep Active. Skipping.")
             return
 
         try:
@@ -130,25 +185,13 @@ class XExamController:
                     target_model = self.model_mapping.get(query, self.state["current_model"])
                     force_model = baseline and query in self.model_mapping
                     
-                    if force_model: print(f"DEBUG: [ITEM {i}] Strictly Forcing Model: {target_model}")
-
-                    res = self.call_groq(target_model, query, "Expert solver. Wrap assertion in <assertion> tags.", force_model=force_model)
+                    result = self.run_x_exam_loop(query, target_model, baseline=baseline, force_model=force_model)
                     
-                    if res:
-                        match = re.search(r"<assertion>(.*?)</assertion>", res, re.DOTALL | re.IGNORECASE)
-                        assertion = match.group(1).strip() if match else res.strip()
-                        output = {
-                            "query": query,
-                            "final_assertion": assertion,
-                            "model_used": target_model,
-                            "timestamp": datetime.now().isoformat(),
-                            "mode": "baseline" if baseline else "x_exam"
-                        }
-                        self.save_result(ds['name'], output, target_results_dir, is_first_item=(i == 0))
+                    if result:
+                        self.save_result(ds['name'], result, target_dir=target_results_dir, is_first_item=(i == 0))
                         ds['index'] = i + 1
                         self.save_state()
                     else:
-                        print(f"DEBUG: Resource Exhausted for {target_model}. Setting cooldown.")
                         self.state["last_all_models_exhausted_at"] = time.time()
                         self.save_state()
                         return
