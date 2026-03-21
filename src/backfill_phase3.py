@@ -63,8 +63,16 @@ def backfill():
                 controller.save_result(ds_name, result, target_dir="results")
                 print(f"  [SUCCESS] Saved.")
             else:
-                print(f"  [FAILED] API Error or Exhaustion.")
-                return 
+                print(f"  [WAITING] API Keys exhausted. Sleeping 65s to reset RPM...")
+                time.sleep(65)
+                # Try one more time after sleep before giving up
+                result = controller.run_x_exam_loop(query, TARGET_MODEL, force_model=True)
+                if result:
+                    controller.save_result(ds_name, result, target_dir="results")
+                    print(f"  [SUCCESS] Saved after sleep.")
+                else:
+                    print(f"  [TERMINATING] Resource still unavailable.")
+                    return 
 
     print("\nBalanced backfill complete.")
 
