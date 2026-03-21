@@ -7,12 +7,12 @@
     {
       "name": "truthful_qa",
       "file": "data/truthful_qa.parquet",
-      "index": 575
+      "index": 0
     },
     {
       "name": "HaluEval",
       "file": "data/HaluEval.parquet",
-      "index": 270
+      "index": 0
     },
     {
       "name": "gsm8k",
