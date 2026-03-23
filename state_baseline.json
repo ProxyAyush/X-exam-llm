@@ -1,13 +1,13 @@
 {
   "current_dataset_idx": 0,
   "current_model": "qwen/qwen3-32b",
-  "total_compute_seconds": 15948.225672483444,
+  "total_compute_seconds": 17673.402110099792,
   "max_compute_minutes": 600,
   "datasets": [
     {
       "name": "truthful_qa",
       "file": "data/truthful_qa.parquet",
-      "index": 0
+      "index": 636
     },
     {
       "name": "HaluEval",
@@ -39,5 +39,6 @@
       "file": "data/law_stack_exchange.parquet",
       "index": 0
     }
-  ]
+  ],
+  "last_all_models_exhausted_at": 1774232407.0283103
 }
