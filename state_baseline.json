@@ -1,7 +1,7 @@
 {
   "current_dataset_idx": 3,
   "current_model": "qwen/qwen3-32b",
-  "total_compute_seconds": 38749.56633257866,
+  "total_compute_seconds": 41761.06926321983,
   "max_compute_minutes": 600,
   "datasets": [
     {
@@ -22,7 +22,7 @@
     {
       "name": "medmcqa",
       "file": "data/medmcqa.parquet",
-      "index": 127
+      "index": 364
     },
     {
       "name": "medqa",
