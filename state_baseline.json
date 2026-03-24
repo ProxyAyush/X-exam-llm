@@ -1,7 +1,7 @@
 {
-  "current_dataset_idx": 6,
+  "current_dataset_idx": 7,
   "current_model": "qwen/qwen3-32b",
-  "total_compute_seconds": 89998.31555461884,
+  "total_compute_seconds": 90391.49425983429,
   "max_compute_minutes": 600,
   "datasets": [
     {
@@ -37,7 +37,7 @@
     {
       "name": "law_stack_exchange",
       "file": "data/law_stack_exchange.parquet",
-      "index": 594
+      "index": 638
     }
   ],
   "last_all_models_exhausted_at": 1774232407.0283103
