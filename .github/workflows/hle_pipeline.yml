@@ -1,0 +1,58 @@
+name: HLE Adversarial Scrutiny Pipeline
+
+on:
+  schedule:
+    - cron: '30 * * * *' # Every hour at :30
+  workflow_dispatch:
+
+concurrency:
+  group: hle-research
+  cancel-in-progress: false
+
+jobs:
+  run-hle-inference:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install requests pandas
+
+      - name: Run HLE Controller
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_API_KEY_AYUSHI: ${{ secrets.GROQ_API_KEY_AYUSHI }}
+          GROQ_API_KEY_AKAAKA: ${{ secrets.GROQ_API_KEY_AKAAKA }}
+        run: |
+          python -u src/hle_controller.py
+
+      - name: Robust Save to GitHub
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git add results/hle || echo "HLE results missing"
+          git add state_hle.json || echo "state_hle.json missing"
+          git add hle_action_logs.txt || echo "hle_action_logs.txt missing"
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Auto-update HLE research data [skip ci]"
+            for i in {1..5}; do
+              git pull --rebase origin main && git push origin main && break || sleep 10
+            done
+          fi
