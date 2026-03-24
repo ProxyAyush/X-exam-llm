@@ -1,7 +1,7 @@
 {
   "current_dataset_idx": 5,
   "current_model": "llama-3.1-8b-instant",
-  "total_compute_seconds": 62873.1841275692,
+  "total_compute_seconds": 65873.95826721191,
   "max_compute_minutes": 600,
   "datasets": [
     {
@@ -32,7 +32,7 @@
     {
       "name": "case_hold",
       "file": "data/case_hold.parquet",
-      "index": 815
+      "index": 938
     },
     {
       "name": "law_stack_exchange",
