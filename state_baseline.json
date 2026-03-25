@@ -1,7 +1,7 @@
 {
   "current_dataset_idx": 7,
   "current_model": "qwen/qwen3-32b",
-  "total_compute_seconds": 90391.49437594414,
+  "total_compute_seconds": 90391.49438714981,
   "max_compute_minutes": 600,
   "datasets": [
     {
