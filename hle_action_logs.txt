@@ -122,3 +122,92 @@
 [2026-03-25 17:42:37] DEBUG: All keys exhausted. Cooling down for 1926.8s
 [2026-03-25 18:14:44] ERROR: Process halted due to persistent API failures.
 [2026-03-25 18:14:44] SUCCESS: Processed 4 items in this session. Total: 8
+[2026-03-25 19:25:51] INFO: 3 API Keys found. Running in LIVE API mode.
+[2026-03-25 19:25:51] INFO: State loaded. Resuming from index 8 using llama-3.3-70b-versatile
+[2026-03-25 19:25:51] ACTION: Starting HLE process (Session Limit: 1000)
+[2026-03-25 19:25:51] ACTION: Processing HLE Item 8...
+[2026-03-25 19:25:56] ACTION: Processing HLE Item 9...
+[2026-03-25 19:26:01] WARNING: 429 Rate Limit (Key 0) on attempt 1
+[2026-03-25 19:26:01] DEBUG: Rotating to API Key Index 1
+[2026-03-25 19:26:02] ACTION: Processing HLE Item 10...
+[2026-03-25 19:26:05] ACTION: Processing HLE Item 11...
+[2026-03-25 19:26:07] ACTION: Processing HLE Item 12...
+[2026-03-25 19:26:12] WARNING: 429 Rate Limit (Key 1) on attempt 1
+[2026-03-25 19:26:12] DEBUG: Rotating to API Key Index 2
+[2026-03-25 19:26:17] ACTION: Processing HLE Item 13...
+[2026-03-25 19:26:21] WARNING: 429 Rate Limit (Key 2) on attempt 1
+[2026-03-25 19:26:21] DEBUG: Rotating to API Key Index 0
+[2026-03-25 19:26:21] DEBUG: All keys exhausted. Cooling down for 24.5s
+[2026-03-25 19:26:45] ACTION: Processing HLE Item 14...
+[2026-03-25 19:26:50] WARNING: 429 Rate Limit (Key 0) on attempt 1
+[2026-03-25 19:26:50] DEBUG: Rotating to API Key Index 1
+[2026-03-25 19:26:50] WARNING: 429 Rate Limit (Key 1) on attempt 2
+[2026-03-25 19:26:50] DEBUG: Rotating to API Key Index 2
+[2026-03-25 19:26:50] ACTION: Processing HLE Item 15...
+[2026-03-25 19:26:52] WARNING: 429 Rate Limit (Key 2) on attempt 1
+[2026-03-25 19:26:52] DEBUG: Rotating to API Key Index 0
+[2026-03-25 19:26:52] DEBUG: All keys exhausted. Cooling down for 22.6s
+[2026-03-25 19:27:15] WARNING: 429 Rate Limit (Key 0) on attempt 2
+[2026-03-25 19:27:15] DEBUG: Rotating to API Key Index 1
+[2026-03-25 19:27:15] WARNING: 429 Rate Limit (Key 1) on attempt 3
+[2026-03-25 19:27:15] DEBUG: Rotating to API Key Index 2
+[2026-03-25 19:27:15] WARNING: 429 Rate Limit (Key 2) on attempt 4
+[2026-03-25 19:27:15] DEBUG: Rotating to API Key Index 0
+[2026-03-25 19:27:15] DEBUG: All keys exhausted. Cooling down for 126.3s
+[2026-03-25 19:29:22] WARNING: 429 Rate Limit (Key 0) on attempt 5
+[2026-03-25 19:29:22] DEBUG: Rotating to API Key Index 1
+[2026-03-25 19:29:22] WARNING: 429 Rate Limit (Key 1) on attempt 6
+[2026-03-25 19:29:22] DEBUG: Rotating to API Key Index 2
+[2026-03-25 19:29:22] WARNING: 429 Rate Limit (Key 2) on attempt 7
+[2026-03-25 19:29:22] DEBUG: Rotating to API Key Index 0
+[2026-03-25 19:29:22] DEBUG: All keys exhausted. Cooling down for 960.1s
+[2026-03-25 19:45:24] WARNING: 429 Rate Limit (Key 0) on attempt 1
+[2026-03-25 19:45:24] DEBUG: Rotating to API Key Index 1
+[2026-03-25 19:45:24] ACTION: Processing HLE Item 16...
+[2026-03-25 19:45:27] WARNING: 429 Rate Limit (Key 1) on attempt 1
+[2026-03-25 19:45:27] DEBUG: Rotating to API Key Index 2
+[2026-03-25 19:45:30] WARNING: 429 Rate Limit (Key 2) on attempt 1
+[2026-03-25 19:45:30] DEBUG: Rotating to API Key Index 0
+[2026-03-25 19:45:30] DEBUG: All keys exhausted. Cooling down for 21.3s
+[2026-03-25 19:45:52] WARNING: 429 Rate Limit (Key 0) on attempt 2
+[2026-03-25 19:45:52] DEBUG: Rotating to API Key Index 1
+[2026-03-25 19:45:52] WARNING: 429 Rate Limit (Key 1) on attempt 3
+[2026-03-25 19:45:52] DEBUG: Rotating to API Key Index 2
+[2026-03-25 19:45:52] WARNING: 429 Rate Limit (Key 2) on attempt 4
+[2026-03-25 19:45:52] DEBUG: Rotating to API Key Index 0
+[2026-03-25 19:45:52] DEBUG: All keys exhausted. Cooling down for 121.5s
+[2026-03-25 19:47:54] WARNING: 429 Rate Limit (Key 0) on attempt 5
+[2026-03-25 19:47:54] DEBUG: Rotating to API Key Index 1
+[2026-03-25 19:47:54] WARNING: 429 Rate Limit (Key 1) on attempt 6
+[2026-03-25 19:47:54] DEBUG: Rotating to API Key Index 2
+[2026-03-25 19:47:54] WARNING: 429 Rate Limit (Key 2) on attempt 7
+[2026-03-25 19:47:54] DEBUG: Rotating to API Key Index 0
+[2026-03-25 19:47:54] DEBUG: All keys exhausted. Cooling down for 962.1s
+[2026-03-25 20:03:56] ACTION: Processing HLE Item 17...
+[2026-03-25 20:04:01] WARNING: 429 Rate Limit (Key 0) on attempt 1
+[2026-03-25 20:04:01] DEBUG: Rotating to API Key Index 1
+[2026-03-25 20:04:01] ACTION: Processing HLE Item 18...
+[2026-03-25 20:04:04] WARNING: 429 Rate Limit (Key 1) on attempt 1
+[2026-03-25 20:04:04] DEBUG: Rotating to API Key Index 2
+[2026-03-25 20:04:07] ACTION: Processing HLE Item 19...
+[2026-03-25 20:04:07] WARNING: 429 Rate Limit (Key 2) on attempt 1
+[2026-03-25 20:04:07] DEBUG: Rotating to API Key Index 0
+[2026-03-25 20:04:07] DEBUG: All keys exhausted. Cooling down for 15.6s
+[2026-03-25 20:04:22] WARNING: 429 Rate Limit (Key 0) on attempt 2
+[2026-03-25 20:04:22] DEBUG: Rotating to API Key Index 1
+[2026-03-25 20:04:22] WARNING: 429 Rate Limit (Key 1) on attempt 3
+[2026-03-25 20:04:22] DEBUG: Rotating to API Key Index 2
+[2026-03-25 20:04:23] WARNING: 429 Rate Limit (Key 2) on attempt 4
+[2026-03-25 20:04:23] DEBUG: Rotating to API Key Index 0
+[2026-03-25 20:04:23] DEBUG: All keys exhausted. Cooling down for 123.5s
+[2026-03-25 20:06:26] WARNING: 429 Rate Limit (Key 0) on attempt 5
+[2026-03-25 20:06:26] DEBUG: Rotating to API Key Index 1
+[2026-03-25 20:06:26] WARNING: 429 Rate Limit (Key 1) on attempt 6
+[2026-03-25 20:06:26] DEBUG: Rotating to API Key Index 2
+[2026-03-25 20:06:26] WARNING: 429 Rate Limit (Key 2) on attempt 7
+[2026-03-25 20:06:26] DEBUG: Rotating to API Key Index 0
+[2026-03-25 20:06:26] DEBUG: All keys exhausted. Cooling down for 967.9s
+[2026-03-25 20:22:39] WARNING: 429 Rate Limit (Key 0) on attempt 1
+[2026-03-25 20:22:39] DEBUG: Rotating to API Key Index 1
+[2026-03-25 20:22:40] INFO: Max runtime reached. Saving state and exiting.
+[2026-03-25 20:22:40] SUCCESS: Processed 12 items in this session. Total: 20
