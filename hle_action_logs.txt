@@ -14,3 +14,10 @@
 [2026-03-25 04:17:53] SUCCESS: Processed 10 items.
 [2026-03-25 04:17:53] ACTION: Pushing results to GitHub...
 [2026-03-25 04:18:03] SUCCESS: Pushed to GitHub via gh.
+[2026-03-25 14:12:48] INFO: 3 API Keys found. Running in LIVE API mode.
+[2026-03-25 14:12:48] INFO: State loaded. Resuming from index 10
+[2026-03-25 14:12:48] ACTION: Starting HLE process (Session Limit: 1000)
+[2026-03-25 14:12:48] ACTION: Processing HLE Item 10...
+[2026-03-25 14:13:01] ERROR: API call failed: 500 Server Error: Internal Server Error for url: https://api.groq.com/openai/v1/chat/completions
+[2026-03-25 14:13:01] ERROR: Process halted due to API failure/rate limits.
+[2026-03-25 14:13:01] SUCCESS: Processed 0 items in this session.
