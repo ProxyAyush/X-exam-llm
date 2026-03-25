@@ -21,3 +21,52 @@
 [2026-03-25 14:13:01] ERROR: API call failed: 500 Server Error: Internal Server Error for url: https://api.groq.com/openai/v1/chat/completions
 [2026-03-25 14:13:01] ERROR: Process halted due to API failure/rate limits.
 [2026-03-25 14:13:01] SUCCESS: Processed 0 items in this session.
+[2026-03-25 15:45:01] INFO: 3 API Keys found. Running in LIVE API mode.
+[2026-03-25 15:45:01] INFO: State loaded. Resuming from index 0 using llama-3.3-70b-versatile
+[2026-03-25 15:45:01] ACTION: Starting HLE process (Session Limit: 1000)
+[2026-03-25 15:45:01] ACTION: Processing HLE Item 0...
+[2026-03-25 15:45:07] ACTION: Processing HLE Item 1...
+[2026-03-25 15:45:15] WARNING: 429 Rate Limit (Key 0) on attempt 1
+[2026-03-25 15:45:15] DEBUG: Rotating to API Key Index 1
+[2026-03-25 15:45:16] ACTION: Processing HLE Item 2...
+[2026-03-25 15:45:20] ACTION: Processing HLE Item 3...
+[2026-03-25 15:45:22] WARNING: 429 Rate Limit (Key 1) on attempt 1
+[2026-03-25 15:45:22] DEBUG: Rotating to API Key Index 2
+[2026-03-25 15:45:24] ACTION: Processing HLE Item 4...
+[2026-03-25 15:45:27] WARNING: 429 Rate Limit (Key 2) on attempt 1
+[2026-03-25 15:45:27] DEBUG: Rotating to API Key Index 0
+[2026-03-25 15:45:27] DEBUG: All keys exhausted. Cooling down for 24.2s
+[2026-03-25 15:45:51] WARNING: 429 Rate Limit (Key 0) on attempt 2
+[2026-03-25 15:45:51] DEBUG: Rotating to API Key Index 1
+[2026-03-25 15:45:51] WARNING: 429 Rate Limit (Key 1) on attempt 3
+[2026-03-25 15:45:51] DEBUG: Rotating to API Key Index 2
+[2026-03-25 15:45:51] WARNING: 429 Rate Limit (Key 2) on attempt 4
+[2026-03-25 15:45:51] DEBUG: Rotating to API Key Index 0
+[2026-03-25 15:45:51] DEBUG: All keys exhausted. Cooling down for 129.7s
+[2026-03-25 15:48:01] WARNING: 429 Rate Limit (Key 0) on attempt 5
+[2026-03-25 15:48:01] DEBUG: Rotating to API Key Index 1
+[2026-03-25 15:48:01] WARNING: 429 Rate Limit (Key 1) on attempt 6
+[2026-03-25 15:48:01] DEBUG: Rotating to API Key Index 2
+[2026-03-25 15:48:01] WARNING: 429 Rate Limit (Key 2) on attempt 7
+[2026-03-25 15:48:01] DEBUG: Rotating to API Key Index 0
+[2026-03-25 15:48:01] DEBUG: All keys exhausted. Cooling down for 961.9s
+[2026-03-25 16:04:06] WARNING: 429 Rate Limit (Key 0) on attempt 1
+[2026-03-25 16:04:06] DEBUG: Rotating to API Key Index 1
+[2026-03-25 16:04:06] WARNING: 429 Rate Limit (Key 1) on attempt 2
+[2026-03-25 16:04:06] DEBUG: Rotating to API Key Index 2
+[2026-03-25 16:04:06] WARNING: 429 Rate Limit (Key 2) on attempt 3
+[2026-03-25 16:04:06] DEBUG: Rotating to API Key Index 0
+[2026-03-25 16:04:06] DEBUG: All keys exhausted. Cooling down for 68.1s
+[2026-03-25 16:05:14] WARNING: 429 Rate Limit (Key 0) on attempt 4
+[2026-03-25 16:05:14] DEBUG: Rotating to API Key Index 1
+[2026-03-25 16:05:14] WARNING: 429 Rate Limit (Key 1) on attempt 5
+[2026-03-25 16:05:14] DEBUG: Rotating to API Key Index 2
+[2026-03-25 16:05:14] WARNING: 429 Rate Limit (Key 2) on attempt 6
+[2026-03-25 16:05:14] DEBUG: Rotating to API Key Index 0
+[2026-03-25 16:05:14] DEBUG: All keys exhausted. Cooling down for 488.1s
+[2026-03-25 16:13:23] WARNING: 429 Rate Limit (Key 0) on attempt 7
+[2026-03-25 16:13:23] DEBUG: Rotating to API Key Index 1
+[2026-03-25 16:13:23] WARNING: 429 Rate Limit (Key 1) on attempt 8
+[2026-03-25 16:13:23] DEBUG: Rotating to API Key Index 2
+[2026-03-25 16:13:23] ERROR: Process halted due to persistent API failures.
+[2026-03-25 16:13:23] SUCCESS: Processed 4 items in this session. Total: 4
