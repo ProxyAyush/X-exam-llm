@@ -235,13 +235,3 @@ class HLEController:
 if __name__ == "__main__":
     controller = HLEController()
     controller.process()
-
-
-    def save_result(self, result):
-        res_file = os.path.join(self.results_dir, "results.jsonl")
-        with open(res_file, "a") as f:
-            f.write(json.dumps(result) + "\n")
-
-if __name__ == "__main__":
-    controller = HLEController()
-    controller.process()
