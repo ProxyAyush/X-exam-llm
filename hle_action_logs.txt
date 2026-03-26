@@ -502,3 +502,11 @@
 [2026-03-26 08:01:36] DEBUG: Rotating to API Key Index 1
 [2026-03-26 08:01:36] ERROR: Process halted due to persistent API failures.
 [2026-03-26 08:01:36] SUCCESS: Processed 3 items in this session. Total: 50
+[2026-03-26 09:23:18] INFO: 3 API Keys found. Running in LIVE API mode.
+[2026-03-26 09:23:18] INFO: State loaded. Resuming from index 50 using llama-3.3-70b-versatile
+[2026-03-26 09:23:18] ACTION: Starting HLE process (Session Limit: 1000)
+[2026-03-26 09:23:18] ACTION: Processing HLE Item 50...
+[2026-03-26 09:23:27] WARNING: 429 Rate Limit (Key 0) on attempt 1
+[2026-03-26 09:23:27] INFO: API Retry-After (1200s) > 15m. Terminating.
+[2026-03-26 09:23:27] INFO: Received session termination signal.
+[2026-03-26 09:23:27] SUCCESS: Processed 0 items in this session. Total: 50
