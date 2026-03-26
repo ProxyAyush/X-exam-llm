@@ -87,6 +87,9 @@ class HLEController:
             self.request_times = [t for t in self.request_times if now - t < 60]
             if len(self.request_times) >= limits["rpm"]:
                 wait_time = 60 - (now - self.request_times[0]) + 2
+                if wait_time > 900: # 15 minutes
+                    self.log("INFO: Local rate limit wait > 15m. Terminating session.")
+                    return "SIGNAL_TERMINATE_SESSION"
                 self.log(f"DEBUG: Local RPM limit. Waiting {wait_time:.1f}s")
                 time.sleep(max(1, wait_time))
 
@@ -106,11 +109,24 @@ class HLEController:
             try:
                 response = requests.post(url, headers=headers, json=data, timeout=90)
                 
+                if response.status_code == 413:
+                    self.log(f"ERROR: 413 Payload Too Large. Prompt length: {len(prompt)}")
+                    return "SIGNAL_SKIP_ITEM"
+
                 if response.status_code == 429:
                     self.log(f"WARNING: 429 Rate Limit (Key {self.current_key_idx}) on attempt {attempt+1}")
+                    # Try to parse Retry-After if present
+                    retry_after = int(response.headers.get("Retry-After", 0))
+                    if retry_after > 900:
+                        self.log(f"INFO: API Retry-After ({retry_after}s) > 15m. Terminating.")
+                        return "SIGNAL_TERMINATE_SESSION"
+                        
                     if not self.rotate_key():
-                        # Full cycle done, backoff
-                        sleep_time = (2 ** attempt) * 15 + random.random() * 10
+                        # Full cycle done
+                        sleep_time = min((2 ** attempt) * 15 + random.random() * 10, 901)
+                        if sleep_time > 900:
+                            self.log("INFO: Exponential backoff > 15m. Terminating.")
+                            return "SIGNAL_TERMINATE_SESSION"
                         self.log(f"DEBUG: All keys exhausted. Cooling down for {sleep_time:.1f}s")
                         time.sleep(sleep_time)
                     continue
@@ -135,6 +151,7 @@ class HLEController:
         gen_system = "You are a PhD-level expert. Solve this question step-by-step. Enclose final answer in <assertion>."
         gen_res = self.call_api_with_retry(query, gen_system)
         if not gen_res: return None
+        if gen_res in ["SIGNAL_TERMINATE_SESSION", "SIGNAL_SKIP_ITEM"]: return gen_res
         
         match = re.search(r"<assertion>(.*?)</assertion>", gen_res, re.DOTALL | re.I)
         assertion = match.group(1).strip() if match else gen_res.strip()
@@ -143,6 +160,7 @@ class HLEController:
         exam_system = "You are a ruthless, PhD-level adversarial auditor. Find any potential flaw, nuance, or edge case in the assertion."
         critique = self.call_api_with_retry(f"Question: {query}\nAssertion: {assertion}", exam_system)
         if not critique: return None
+        if critique in ["SIGNAL_TERMINATE_SESSION", "SIGNAL_SKIP_ITEM"]: return critique
         
         # 3. Judge
         if self.simulation_mode:
@@ -151,6 +169,7 @@ class HLEController:
             judge_system = "Decide if the assertion is correct given the critique. Output <verdict>ACCEPT</verdict> or <verdict>REJECT</verdict>."
             judge_res = self.call_api_with_retry(f"Q: {query}\nA: {assertion}\nCritique: {critique}", judge_system)
             if not judge_res: return None
+            if judge_res in ["SIGNAL_TERMINATE_SESSION", "SIGNAL_SKIP_ITEM"]: return judge_res
             match_v = re.search(r"<verdict>(.*?)</verdict>", judge_res, re.I)
             verdict = match_v.group(1).upper() if match_v else "REJECT"
 
@@ -199,7 +218,15 @@ class HLEController:
             self.log(f"ACTION: Processing HLE Item {i}...")
             res = self.run_x_exam_loop(query, answer)
             
-            if res:
+            if res == "SIGNAL_TERMINATE_SESSION":
+                self.log("INFO: Received session termination signal.")
+                break
+            elif res == "SIGNAL_SKIP_ITEM":
+                self.log(f"WARNING: Skipping item {i} due to payload size or specific error.")
+                self.state["last_index"] = i + 1 # Still increment index to skip it
+                self.save_state()
+                continue
+            elif res:
                 self.save_result(res)
                 self.state["last_index"] = i + 1
                 self.state["total_processed"] += 1
