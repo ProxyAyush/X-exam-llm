@@ -1,8 +1,9 @@
 name: X-Exam Adversarial Reasoning Pipeline
 
 on:
-  schedule:
-    - cron: '0 * * * *' # Every hour
+  # Schedule disabled - phase 3 is over
+  # schedule:
+  #   - cron: '0 * * * *' # Every hour
   workflow_dispatch:
     inputs:
       baseline:
