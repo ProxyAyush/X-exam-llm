@@ -1107,3 +1107,33 @@
 [2026-03-28 21:53:31] INFO: API Retry-After (4543s) > 15m. Terminating.
 [2026-03-28 21:53:31] INFO: Received session termination signal.
 [2026-03-28 21:53:31] SUCCESS: Processed 0 items in this session. Total: 164
+[2026-03-28 22:58:51] INFO: 3 API Keys found. Running in LIVE API mode.
+[2026-03-28 22:58:51] INFO: State loaded. Resuming from index 164 using llama-3.3-70b-versatile
+[2026-03-28 22:58:51] ACTION: Starting HLE process (Session Limit: 1000)
+[2026-03-28 22:58:51] ACTION: Processing HLE Item 164...
+[2026-03-28 22:58:51] WARNING: 429 Rate Limit (Key 0) on attempt 1
+[2026-03-28 22:58:51] DEBUG: Rotating to API Key Index 1
+[2026-03-28 22:58:53] WARNING: 429 Rate Limit (Key 1) on attempt 1
+[2026-03-28 22:58:53] DEBUG: Rotating to API Key Index 2
+[2026-03-28 22:58:54] WARNING: 429 Rate Limit (Key 2) on attempt 1
+[2026-03-28 22:58:54] DEBUG: Rotating to API Key Index 0
+[2026-03-28 22:58:54] DEBUG: All keys exhausted. Cooling down for 18.5s
+[2026-03-28 22:59:12] WARNING: 429 Rate Limit (Key 0) on attempt 2
+[2026-03-28 22:59:12] DEBUG: Rotating to API Key Index 1
+[2026-03-28 22:59:13] ACTION: Processing HLE Item 165...
+[2026-03-28 22:59:15] WARNING: 429 Rate Limit (Key 1) on attempt 1
+[2026-03-28 22:59:15] DEBUG: Rotating to API Key Index 2
+[2026-03-28 22:59:19] ACTION: Processing HLE Item 166...
+[2026-03-28 22:59:26] ACTION: Processing HLE Item 167...
+[2026-03-28 22:59:31] ACTION: Processing HLE Item 168...
+[2026-03-28 22:59:36] ACTION: Processing HLE Item 169...
+[2026-03-28 22:59:41] WARNING: 429 Rate Limit (Key 2) on attempt 1
+[2026-03-28 22:59:41] DEBUG: Rotating to API Key Index 0
+[2026-03-28 22:59:41] DEBUG: All keys exhausted. Cooling down for 16.6s
+[2026-03-28 22:59:58] ACTION: Processing HLE Item 170...
+[2026-03-28 23:00:03] ACTION: Processing HLE Item 171...
+[2026-03-28 23:00:06] ACTION: Processing HLE Item 172...
+[2026-03-28 23:00:11] WARNING: 429 Rate Limit (Key 0) on attempt 1
+[2026-03-28 23:00:11] INFO: API Retry-After (1206s) > 15m. Terminating.
+[2026-03-28 23:00:11] INFO: Received session termination signal.
+[2026-03-28 23:00:11] SUCCESS: Processed 8 items in this session. Total: 172
