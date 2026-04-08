@@ -3339,3 +3339,34 @@
 [2026-04-08 08:01:35] INFO: API Retry-After (1808s) > 15m. Terminating.
 [2026-04-08 08:01:35] INFO: Received session termination signal.
 [2026-04-08 08:01:35] SUCCESS: Processed 10 items in this session. Total: 869
+[2026-04-08 10:37:48] INFO: 3 API Keys found. Running in LIVE API mode.
+[2026-04-08 10:37:48] INFO: State loaded. Resuming from index 869 using llama-3.3-70b-versatile
+[2026-04-08 10:37:48] ACTION: Starting HLE process (Session Limit: 1000)
+[2026-04-08 10:37:48] ACTION: Processing HLE Item 869...
+[2026-04-08 10:37:54] ACTION: Processing HLE Item 870...
+[2026-04-08 10:38:05] WARNING: 429 Rate Limit (Key 0) on attempt 1
+[2026-04-08 10:38:05] DEBUG: Rotating to API Key Index 1
+[2026-04-08 10:38:05] ACTION: Processing HLE Item 871...
+[2026-04-08 10:38:11] ACTION: Processing HLE Item 872...
+[2026-04-08 10:38:24] ACTION: Processing HLE Item 873...
+[2026-04-08 10:38:30] ACTION: Processing HLE Item 874...
+[2026-04-08 10:38:32] WARNING: 429 Rate Limit (Key 1) on attempt 1
+[2026-04-08 10:38:32] DEBUG: Rotating to API Key Index 2
+[2026-04-08 10:38:33] ACTION: Processing HLE Item 875...
+[2026-04-08 10:38:41] ACTION: Processing HLE Item 876...
+[2026-04-08 10:38:44] WARNING: 429 Rate Limit (Key 2) on attempt 1
+[2026-04-08 10:38:44] DEBUG: Rotating to API Key Index 0
+[2026-04-08 10:38:44] DEBUG: All keys exhausted. Cooling down for 19.8s
+[2026-04-08 10:39:06] WARNING: 429 Rate Limit (Key 0) on attempt 1
+[2026-04-08 10:39:06] DEBUG: Rotating to API Key Index 1
+[2026-04-08 10:39:06] ACTION: Processing HLE Item 877...
+[2026-04-08 10:39:11] ACTION: Processing HLE Item 878...
+[2026-04-08 10:39:11] WARNING: 429 Rate Limit (Key 1) on attempt 1
+[2026-04-08 10:39:11] DEBUG: Rotating to API Key Index 2
+[2026-04-08 10:39:16] WARNING: 429 Rate Limit (Key 2) on attempt 1
+[2026-04-08 10:39:16] DEBUG: Rotating to API Key Index 0
+[2026-04-08 10:39:16] DEBUG: All keys exhausted. Cooling down for 15.8s
+[2026-04-08 10:39:32] WARNING: 429 Rate Limit (Key 0) on attempt 2
+[2026-04-08 10:39:32] INFO: API Retry-After (1680s) > 15m. Terminating.
+[2026-04-08 10:39:32] INFO: Received session termination signal.
+[2026-04-08 10:39:32] SUCCESS: Processed 9 items in this session. Total: 878
