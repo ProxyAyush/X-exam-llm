@@ -6201,3 +6201,12 @@
 [2026-04-24 14:14:56] INFO: API Retry-After (1022s) > 15m. Terminating.
 [2026-04-24 14:14:56] INFO: Received session termination signal.
 [2026-04-24 14:14:56] SUCCESS: Processed 3 items in this session. Total: 1951
+[2026-04-24 16:33:23] INFO: 3 API Keys found. Running in LIVE API mode.
+[2026-04-24 16:33:23] INFO: State loaded. Resuming from index 1953 using llama-3.3-70b-versatile
+[2026-04-24 16:33:23] ACTION: Starting HLE process (Session Limit: 1000)
+[2026-04-24 16:33:23] ACTION: Processing HLE Item 1953...
+[2026-04-24 16:33:30] ACTION: Processing HLE Item 1954...
+[2026-04-24 16:33:32] WARNING: 429 Rate Limit (Key 0) on attempt 1
+[2026-04-24 16:33:32] INFO: API Retry-After (952s) > 15m. Terminating.
+[2026-04-24 16:33:32] INFO: Received session termination signal.
+[2026-04-24 16:33:32] SUCCESS: Processed 1 items in this session. Total: 1952
