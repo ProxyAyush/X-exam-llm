@@ -6826,3 +6826,7 @@
 [2026-04-28 04:16:07] DEBUG: Rotating to API Key Index 1
 [2026-04-28 04:16:07] ACTION: Processing HLE Item 2157...
 [2026-04-28 04:16:10] SUCCESS: Processed 20 items in this session. Total: 2156
+[2026-04-28 09:04:40] INFO: 3 API Keys found. Running in LIVE API mode.
+[2026-04-28 09:04:40] INFO: State loaded. Resuming from index 2158 using llama-3.3-70b-versatile
+[2026-04-28 09:04:40] ACTION: Starting HLE process (Session Limit: 1000)
+[2026-04-28 09:04:40] INFO: All items already processed.
