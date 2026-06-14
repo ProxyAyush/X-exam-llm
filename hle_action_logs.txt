@@ -7962,3 +7962,14 @@
 [2026-06-14 20:06:43] INFO: State loaded. Resuming from index 2158 using llama-3.3-70b-versatile
 [2026-06-14 20:06:43] ACTION: Starting HLE process (Session Limit: 1000)
 [2026-06-14 20:06:43] INFO: All items already processed.
+[2026-06-14 20:39:42] BACKFILL: Starting backfill for 2 missing items: [1219, 1485]
+[2026-06-14 20:39:42] BACKFILL: Processing missing item 1219 (query length: 54)...
+[2026-06-14 20:39:58] BACKFILL: SUCCESS: Item 1219 completed. Verdict: ACCEPT
+[2026-06-14 20:40:03] BACKFILL: Processing missing item 1485 (query length: 7691)...
+[2026-06-14 20:40:03] BACKFILL: Truncating prompt from 7691 to 4000 chars
+[2026-06-14 20:40:06] BACKFILL: Truncating prompt from 4030 to 4000 chars
+[2026-06-14 20:40:06] BACKFILL: 429 Rate limit, rotating key, waiting 14s
+[2026-06-14 20:40:23] BACKFILL: Truncating prompt from 6996 to 4000 chars
+[2026-06-14 20:40:23] BACKFILL: 429 Rate limit, rotating key, waiting 11s
+[2026-06-14 20:40:37] BACKFILL: SUCCESS: Item 1485 completed. Verdict: REJECT
+[2026-06-14 20:40:42] BACKFILL: BACKFILL COMPLETE: 2/2 items processed. Total now: 2158
