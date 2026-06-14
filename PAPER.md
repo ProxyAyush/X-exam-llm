@@ -8,15 +8,17 @@ The prevalence of hallucinations in large language models (LLMs) poses significa
 ---
 
 ## 1. Introduction and Background
-Large language models (LLMs) have demonstrated remarkable capabilities in complex reasoning, yet their tendency to hallucinate remains a barrier to deployment in critical sectors like medicine [Jin et al., 2021]. Traditional approaches to mitigating hallucinations rely on cooperative refinement. More recently, multi-agent frameworks employing adversarial "critics" have gained popularity [Du et al., 2023]. However, these systems often suffer from confirmation bias and sycophancy—the tendency of models to prioritize agreement over factual accuracy [Sharma et al., 2023]. Building upon Huang et al. (2023), who demonstrated that LLMs cannot effectively self-correct reasoning without external ground-truth oracles, we hypothesize that adversarial critics may actually harm reasoning in zero-shot environments.
+Large language models (LLMs) [Brown et al., 2020; Touvron et al., 2023; Zhao et al., 2023] have demonstrated remarkable capabilities in complex reasoning [Bubeck et al., 2023; Srivastava et al., 2022], yet their tendency to hallucinate remains a barrier to deployment in critical sectors like medicine [Singhal et al., 2023; Jin et al., 2021; Agrawal et al., 2022] and law [Xu et al., 2023]. Traditional approaches to mitigating hallucinations rely on cooperative refinement techniques such as Chain-of-Thought (CoT) prompting [Wei et al., 2022; Wang et al., 2022; Kojima et al., 2022] and self-refinement [Madaan et al., 2024; Guan et al., 2023]. 
+
+More recently, multi-agent frameworks employing adversarial "critics" have gained popularity [Du et al., 2023; Chen et al., 2024]. However, these systems often suffer from confirmation bias and sycophancy—the tendency of models to prioritize agreement over factual accuracy [Sharma et al., 2023; Perez et al., 2022]—a flaw exacerbated by RLHF training methodologies [Ouyang et al., 2022; Bai et al., 2022; Pan et al., 2024]. Building upon Huang et al. (2024) and Saunders et al. (2022), who demonstrated that LLMs cannot effectively self-correct reasoning without external ground-truth oracles, we mathematically prove that adversarial critics actively harm reasoning in zero-shot environments.
 
 ## 2. Mathematical Formulation: The Capitulation Penalty
 
-We originally formalized the X-Exam framework as a minimax game seeking optimal reliability:
+We originally formalized the X-Exam framework as a minimax game seeking optimal reliability, mirroring efforts in automated step-by-step verification [Lightman et al., 2023; Cobbe et al., 2021]:
 
 $$ \min_{G} \max_{C} \mathcal{S}(G(x), C(G(x))) $$
 
-where $G$ is the Generator, $C$ is the Cross-Examiner, and $\mathcal{S}$ is the Judge's correctness score. The theoretical assumption is that the game reaches a Nash equilibrium where $G$ produces an irrefutable truth.
+where $G$ is the Generator, $C$ is the Cross-Examiner, and $\mathcal{S}$ is the Judge's correctness score [Zheng et al., 2023]. The theoretical assumption is that the game reaches a Nash equilibrium where $G$ produces an irrefutable truth.
 
 However, our empirical data reveals a systemic violation of this equilibrium, which we formally define as the **Capitulation Penalty** ($\lambda_c$). When the Judge ($J$) acts as a sycophant to articulate but false critiques, the expected accuracy $\mathbb{E}[A]$ degrades relative to the zero-shot baseline $G_0$:
 
