@@ -70,6 +70,7 @@ We focus on high-stakes domains where hallucinations are most dangerous:
 - **Clinical/Medical:** MedQA (USMLE), MedMCQA.
 - **Legal Reasoning:** CaseHOLD, Law Stack Exchange.
 - **Reasoning/Logic:** TruthfulQA, HaluEval, GSM8K.
+- **Extreme Difficulty:** HLE (Humanity's Last Exam).
 
 ---
 
@@ -115,8 +116,8 @@ X-Exam is more than a benchmark; it is a **discovery engine**. The interaction d
 ## 📜 Roadmap & Current Status
 - [x] **Phase 1:** Repository Scaffolding & MLOps setup.
 - [x] **Phase 2:** Dataset ingestion & deterministic sampling implementation.
-- [x] **Phase 3:** Large-scale inference (Currently Processing `HaluEval`).
-- [ ] **Phase 4:** Statistical analysis (ECE Calculation, Brier Scores).
+- [x] **Phase 3:** Large-scale inference (All 8 benchmarks complete, including HLE).
+- [ ] **Phase 4:** Statistical analysis (ECE Calculation, Brier Scores, Visualizations).
 - [ ] **Phase 5:** LaTeX Manuscript Synthesis
 
 ---

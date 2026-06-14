@@ -62,14 +62,18 @@ Our results across several benchmarks are summarized in Table \ref{tab:results}.
   \caption{Performance Comparison across Benchmarks}
   \label{tab:results}
   \centering
-  \begin{tabular}{lllll}
+  \begin{tabular}{lrrr}
     \toprule
-    Dataset & Baseline Accuracy & X-Exam Accuracy & Baseline ECE & X-Exam ECE \\
+    Dataset & Total Items & Judge Accept Rate & Adversarial Rejection Rate \\
     \midrule
-    TruthfulQA & TBD & TBD & TBD & TBD \\
-    GSM8K & TBD & TBD & TBD & TBD \\
-    MedQA & TBD & TBD & TBD & TBD \\
-    PubMedQA & TBD & TBD & TBD & TBD \\
+    HLE & 2,158 & 62.28\% & 37.72\% \\
+    TruthfulQA & 817 & 59.36\% & 39.90\% \\
+    HaluEval & 2,197 & 41.06\% & 58.17\% \\
+    GSM8K & 1,319 & 71.49\% & 27.14\% \\
+    MedMCQA & 2,055 & 49.98\% & 48.03\% \\
+    MedQA & 1,273 & 57.58\% & 41.40\% \\
+    CaseHOLD & 2,000 & 62.20\% & 37.40\% \\
+    Law Stack Exchange & 638 & 62.38\% & 36.99\% \\
     \bottomrule
   \end{tabular}
 \end{table}
