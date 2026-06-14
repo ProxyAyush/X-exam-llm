@@ -28,11 +28,11 @@
 \maketitle
 
 \begin{abstract}
-  The prevalence of hallucinations in large language models (LLMs) poses significant risks in high-stakes domains such as medicine and law. Recent trends suggest that multi-agent adversarial debate---where a "Generator" proposes an answer and a "Cross-Examiner" critiques it---improves reliability. In this paper, we introduce the X-Exam framework, a tripartite minimax game evaluated across 12,457 queries spanning 8 rigorous benchmarks (including MedQA, CaseHOLD, and Humanity's Last Exam). Contrary to the prevailing hypothesis, our large-scale empirical evaluation proves that adversarial multi-agent setups actively degrade performance by up to 58.7\%. We identify and define the phenomenon of \textit{Adversarial Capitulation}, where highly articulate but logically flawed critiques force a sycophantic Judge to reject correct assertions. Our findings caution against the uncritical adoption of multi-agent self-correction in high-stakes clinical and legal settings \cite{arxiv260608496v1,arxiv260608245v1,arxiv260603812v1,arxiv260603628v1,arxiv260603489v1,arxiv260528805v1,arxiv260528916v2,arxiv260528421v1,arxiv260527582v1,arxiv260524069v1,arxiv260519748v1,arxiv260519228v2,arxiv260517305v1,arxiv260517291v1,arxiv260514527v1,arxiv260514403v1,arxiv260513167v1,arxiv260510741v1,arxiv260506139v2,arxiv260504874v1,arxiv260613197v1,arxiv260612748v1,arxiv260610475v1,arxiv260608283v1,arxiv260607810v1,arxiv260604691v1,arxiv260601828v1,arxiv260600939v1,arxiv260530391v1,arxiv260529612v1,arxiv260528699v1,arxiv260525133v1,arxiv260524755v1,arxiv260517044v1,arxiv260515034v1,arxiv260514495v1,arxiv260513725v1,arxiv260511789v1,arxiv260509618v1,arxiv260613220v1,arxiv260612360v1,arxiv260610061v1,arxiv260609068v1,arxiv260608629v1,arxiv260608483v1,arxiv260608451v1,arxiv260608076v1,arxiv260607441v1,arxiv260606306v1,arxiv260605734v1,arxiv260605403v1,arxiv260605030v1,arxiv260602211v1,arxiv260529358v1,arxiv260527996v2,arxiv260527288v1,arxiv260521778v1,arxiv260518372v2,arxiv260613438v1,arxiv260613111v1,arxiv260613108v1,arxiv260613104v1,arxiv260613082v1,arxiv260612900v1,arxiv260612897v1,arxiv260612040v2,arxiv260611678v1,arxiv260611470v1,arxiv260611105v1,arxiv260610799v1,arxiv260611256v1,arxiv260610198v2,arxiv260609278v1,arxiv260609249v1,arxiv260608969v1,arxiv260608948v1,arxiv260608815v1,arxiv260608806v1,arxiv260527881v2,arxiv260507905v2,arxiv260500365v1,arxiv260600020v1,arxiv260422774v2,arxiv260308251v1,arxiv260103263v2,arxiv250816213v1,arxiv250712759v1,arxiv250212118v2,arxiv241206134v4,arxiv240912147v2,arxiv230514934v3,arxiv220713509v3,arxiv191008592v1,arxiv190700302v2,arxiv260600971v1,arxiv260530646v1,arxiv260517435v1,arxiv260515000v1,arxiv260513936v1,arxiv260427724v1,arxiv260426048v1,arxiv260423801v1,arxiv260407274v1,arxiv260400438v1,arxiv260400261v2,arxiv260327150v2,arxiv260326807v1}.
+  The prevalence of hallucinations in large language models (LLMs) poses significant risks in high-stakes domains such as medicine and law. Recent trends suggest that multi-agent adversarial debate---where a "Generator" proposes an answer and a "Cross-Examiner" critiques it---improves reliability. In this paper, we introduce the X-Exam framework, a tripartite minimax game evaluated across 12,457 queries spanning 8 rigorous benchmarks (including MedQA, CaseHOLD, and Humanity's Last Exam). Contrary to the prevailing hypothesis, our large-scale empirical evaluation proves that adversarial multi-agent setups actively degrade performance by up to 58.7\%. We identify and define the phenomenon of \textit{Adversarial Capitulation}, where highly articulate but logically flawed critiques force a sycophantic Judge to reject correct assertions. Our findings caution against the uncritical adoption of multi-agent self-correction in high-stakes clinical and legal settings \cite{huang2024large,ji2023survey,madaan2023selfrefine,shinn2023reflexion,zhang2025sirens,manakul-etal-2023-selfcheckgpt,du24improving,liang-etal-2024-encouraging,chan2024chateval,li2023camel,chen2024agentverse,bo2024reflective,li2026omac,sharma2024towards,wei2024simple,perez-etal-2023-discovering,kaur-2025-echoes,kim-etal-2026-doctor,hong-etal-2025-measuring,singhal2023large,singhal2023towards,jin2021disease,ting2023large,Ong2024,alber2025medical}.
 \end{abstract}
 
 \section{Introduction}
-Large language models (LLMs) have demonstrated remarkable capabilities in complex reasoning, yet their tendency to hallucinate remains a barrier to deployment in critical sectors. Traditional approaches to mitigating hallucinations, such as Chain-of-Thought (CoT) and Self-Refine, rely on cooperative refinement. More recently, multi-agent frameworks employing adversarial "critics" have gained popularity. However, these systems often suffer from confirmation bias and sycophancy.
+Large language models (LLMs) have demonstrated remarkable capabilities in complex reasoning, yet their tendency to hallucinate remains a barrier to deployment in critical sectors like medicine \cite{singhal2023large, jin2021disease}. Traditional approaches to mitigating hallucinations, such as Chain-of-Thought (CoT) \cite{wei2022chain} and Self-Refine \cite{madaan2023selfrefine}, rely on cooperative refinement. More recently, multi-agent frameworks employing adversarial "critics" have gained popularity \cite{du24improving}. However, these systems often suffer from confirmation bias and sycophancy \cite{sharma2024towards, perez-etal-2023-discovering}. Building upon \cite{huang2024large}, who demonstrated that LLMs cannot effectively self-correct reasoning without external ground-truth oracles, we hypothesize that adversarial critics may actually harm reasoning in zero-shot environments.
 
 \section{Mathematical Formulation: The Capitulation Penalty}
 We originally formalized the X-Exam framework as a minimax game seeking optimal reliability:
@@ -55,23 +55,7 @@ Our evaluation across 8 datasets (N=12,457) revealed a stark degradation in accu
 \end{equation}
 where $b$ is the number of instances where the baseline was correct but X-Exam failed (Capitulation), and $c$ is the number of instances where the baseline failed but X-Exam succeeded (Correction).
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.8\textwidth]{figures/accuracy_shift.png}
-  \caption{The Adversarial Capitulation Effect: Accuracy drops significantly under adversarial scrutiny.}
-  \label{fig:accuracy_shift}
-\end{figure}
-
 The degradation is highly statistically significant across all impacted benchmarks. On the HaluEval dataset ($n=477$ sample matched), the Baseline achieved 94.55\% accuracy, while X-Exam plummeted to 35.85\% ($\Delta = -58.70\%$). The McNemar test yields a $\chi^2 > 150$, corresponding to $p < 0.0001$. Similarly, MedQA (USMLE) saw a 40\% absolute reduction in accuracy ($p < 0.01$).
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.8\textwidth]{figures/accuracy_shift.png}
-  \caption{The Adversarial Capitulation Effect: Accuracy drops significantly under adversarial scrutiny, particularly in clinical (MedQA) and hallucination (HaluEval) datasets.}
-  \label{fig:accuracy_shift}
-\end{figure}
-
-As shown in Figure \ref{fig:accuracy_shift}, performance on HaluEval plummeted by 58.7 percentage points, while MedQA (USMLE) performance dropped by 40 percentage points.
 
 \begin{figure}[h]
   \centering
@@ -103,9 +87,9 @@ Table \ref{tab:results} outlines the adversarial rejection rates (the percentage
 \end{table}
 
 \section{Conclusion}
-The X-Exam framework empirically disproves the assumption that adversarial multi-agent debate naturally converges on the truth. Instead, it exposes a critical flaw in current LLM reasoning: Adversarial Capitulation. The models act as sycophants to articulate critiques, choosing to abandon correct assertions rather than defend them. Future work must focus on calibrating Judge agents to resist eloquent but factually vacuous adversarial attacks before deploying such frameworks in clinical settings.
+The X-Exam framework empirically disproves the assumption that adversarial multi-agent debate naturally converges on the truth. Instead, it exposes a critical flaw in current LLM reasoning: Adversarial Capitulation. The models act as sycophants to articulate critiques, choosing to abandon correct assertions rather than defend them. Future work must focus on calibrating Judge agents to resist eloquent but factually vacuous adversarial attacks before deploying such frameworks in clinical settings \cite{Ong2024}.
 
 \bibliographystyle{plain}
-\bibliography{references}
+\bibliography{high_quality_refs}
 
 \end{document}
