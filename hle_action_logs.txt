@@ -7973,3 +7973,7 @@
 [2026-06-14 20:40:23] BACKFILL: 429 Rate limit, rotating key, waiting 11s
 [2026-06-14 20:40:37] BACKFILL: SUCCESS: Item 1485 completed. Verdict: REJECT
 [2026-06-14 20:40:42] BACKFILL: BACKFILL COMPLETE: 2/2 items processed. Total now: 2158
+[2026-06-14 22:43:14] INFO: 3 API Keys found. Running in LIVE API mode.
+[2026-06-14 22:43:14] INFO: State loaded. Resuming from index 2158 using llama-3.3-70b-versatile
+[2026-06-14 22:43:14] ACTION: Starting HLE process (Session Limit: 1000)
+[2026-06-14 22:43:14] INFO: All items already processed.
