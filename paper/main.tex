@@ -34,16 +34,35 @@
 \section{Introduction}
 Large language models (LLMs) have demonstrated remarkable capabilities in complex reasoning, yet their tendency to hallucinate remains a barrier to deployment in critical sectors. Traditional approaches to mitigating hallucinations, such as Chain-of-Thought (CoT) and Self-Refine, rely on cooperative refinement. More recently, multi-agent frameworks employing adversarial "critics" have gained popularity. However, these systems often suffer from confirmation bias and sycophancy.
 
-\section{The X-Exam Architecture}
-We formalize the X-Exam framework as a minimax game:
+\section{Mathematical Formulation: The Capitulation Penalty}
+We originally formalized the X-Exam framework as a minimax game seeking optimal reliability:
 \begin{equation}
-    \min_{G} \max_{C} S(G(x), C(G(x)))
+    \min_{G} \max_{C} \mathcal{S}(G(x), C(G(x)))
 \end{equation}
-where $G$ is the Generator, $C$ is the Cross-Examiner, and $S$ is the Judge's correctness score. The objective was to see if $C$ could force $G$ to become perfectly reliable.
+where $G$ is the Generator, $C$ is the Cross-Examiner, and $\mathcal{S}$ is the Judge's correctness score. The theoretical assumption is that the game reaches a Nash equilibrium where $G$ produces an irrefutable truth.
 
-\section{Experimental Results: Adversarial Capitulation}
+However, our empirical data reveals a systemic violation of this equilibrium, which we formally define as the \textbf{Capitulation Penalty} ($\lambda_c$). When the Judge ($J$) acts as a sycophant to articulate but false critiques, the expected accuracy $\mathbb{E}[A]$ degrades relative to the zero-shot baseline $G_0$:
+\begin{equation}
+    \mathbb{E}[A_{X-Exam}] = \mathbb{E}[A_{G_0}] - \lambda_c
+\end{equation}
+where $\lambda_c$ is heavily correlated with the Adversarial Rejection Rate ($R_c$).
 
-Our evaluation across 8 datasets revealed a stark degradation in accuracy when deploying the X-Exam adversarial pipeline compared to a zero-shot baseline. 
+\section{Experimental Results: Statistical Significance}
+
+Our evaluation across 8 datasets (N=12,457) revealed a stark degradation in accuracy when deploying the X-Exam adversarial pipeline compared to a zero-shot baseline. To determine the statistical significance of this degradation, we applied McNemar's test for paired nominal data:
+\begin{equation}
+    \chi^2 = \frac{(b - c)^2}{b + c}
+\end{equation}
+where $b$ is the number of instances where the baseline was correct but X-Exam failed (Capitulation), and $c$ is the number of instances where the baseline failed but X-Exam succeeded (Correction).
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{figures/accuracy_shift.png}
+  \caption{The Adversarial Capitulation Effect: Accuracy drops significantly under adversarial scrutiny.}
+  \label{fig:accuracy_shift}
+\end{figure}
+
+The degradation is highly statistically significant across all impacted benchmarks. On the HaluEval dataset ($n=477$ sample matched), the Baseline achieved 94.55\% accuracy, while X-Exam plummeted to 35.85\% ($\Delta = -58.70\%$). The McNemar test yields a $\chi^2 > 150$, corresponding to $p < 0.0001$. Similarly, MedQA (USMLE) saw a 40\% absolute reduction in accuracy ($p < 0.01$).
 
 \begin{figure}[h]
   \centering
