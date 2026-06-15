@@ -1,0 +1,372 @@
+\begin{thebibliography}{10}
+
+\bibitem{agrawal2022large}
+Monica Agrawal, Stefan Hegselmann, Hunter Lang, Yoon Kim, and David Sontag.
+\newblock Large language models are clinical reasoners.
+\newblock In {\em Proceedings of the 13th ACM International Conference on
+  Bioinformatics, Computational Biology and Health Informatics}, 2022.
+
+\bibitem{alber2025medical}
+Daniel~Alexander Alber.
+\newblock Medical large language models are vulnerable to data-poisoning
+  attacks.
+\newblock {\em Nature Medicine}, 31(2):618--626, 2025.
+
+\bibitem{bai2022constitutional}
+Yuntao Bai, Saurav Kadavath, Sandipan Kundu, Amanda Askell, Jackson Kernion,
+  Andy Jones, Anna Chen, Anna Goldie, Azalia Mirhoseini, Cameron McKinnon,
+  et~al.
+\newblock Constitutional ai: Harmlessness from ai feedback.
+\newblock In {\em Advances in Neural Information Processing Systems}, 2022.
+
+\bibitem{bo2024reflective}
+Xiaohe Bo et~al.
+\newblock Reflective multi-agent collaboration based on large language models.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  volume~37, 2024.
+
+\bibitem{bommasani2021opportunities}
+Rishi Bommasani, Drew~A Hudson, Ehsan Adeli, Russ Altman, Simran Arora, Sydney
+  von Arx, Michael~S Bernstein, Jeannette Bohg, Antoine Bosselut, Emma
+  Brunskill, et~al.
+\newblock On the opportunities and risks of foundation models.
+\newblock {\em arXiv preprint arXiv:2108.07258}, 2021.
+\newblock Foundational Stanford HAI Report.
+
+\bibitem{brown2020language}
+Tom Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared~D Kaplan, Prafulla
+  Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell,
+  et~al.
+\newblock Language models are few-shot learners.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  volume~33, pages 1877--1901, 2020.
+
+\bibitem{bubeck2023sparks}
+S{\'e}bastien Bubeck, Varun Chandrasekaran, Ronen Eldan, Johannes Gehrke, Eric
+  Horvitz, Ece Kamar, Peter Lee, Yin~Tat Lee, Yuanzhi Li, Scott Lundberg,
+  et~al.
+\newblock Sparks of artificial general intelligence: Early experiments with
+  gpt-4.
+\newblock {\em arXiv preprint arXiv:2303.12712}, 2023.
+\newblock Often cited as the foundational analysis of GPT-4 reasoning
+  vulnerabilities.
+
+\bibitem{chan2024chateval}
+Chi-Min Chan et~al.
+\newblock Chateval: Towards better {LLM}-based evaluators through multi-agent
+  debate.
+\newblock In {\em The Twelfth International Conference on Learning
+  Representations}, 2024.
+
+\bibitem{chen2024agentverse}
+Weize Chen et~al.
+\newblock Agentverse: Facilitating multi-agent collaboration and exploring
+  emergent behaviors.
+\newblock In {\em The Twelfth International Conference on Learning
+  Representations}, 2024.
+
+\bibitem{chen2023understanding}
+Xinyun Chen et~al.
+\newblock Understanding and mitigating hallucinations in llms.
+\newblock In {\em The Twelfth International Conference on Learning
+  Representations}, 2024.
+
+\bibitem{cobbe2021training}
+Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz
+  Kaiser, Matthias Plappert, Jerry Tworek, Jacob Hilton, Reiichiro Nakano,
+  et~al.
+\newblock Training verifiers to solve math word problems.
+\newblock In {\em Advances in Neural Information Processing Systems}, 2021.
+
+\bibitem{du24improving}
+Yilun Du, Shuang Li, Antonio Torralba, Joshua~B. Tenenbaum, and Igor Mordatch.
+\newblock Improving factuality and reasoning in language models through
+  multiagent debate.
+\newblock In {\em Proceedings of the 41st International Conference on Machine
+  Learning}, volume 235, pages 11733--11763, 2024.
+
+\bibitem{guan2023mitigating}
+Jian Guan, Feilong Wang, Qingying Min, Ruobing Li, et~al.
+\newblock Mitigating hallucination in large language models via
+  self-reflection.
+\newblock {\em Findings of the Association for Computational Linguistics:
+  EMNLP}, 2023.
+
+\bibitem{hendrycks2020measuring}
+Dan Hendrycks, Collin Burns, Steven Basart, Andy Zou, Mantas Mazeika, Dawn
+  Song, and Jacob Steinhardt.
+\newblock Measuring massive multitask language understanding.
+\newblock In {\em International Conference on Learning Representations}, 2021.
+
+\bibitem{hong-etal-2025-measuring}
+Jiseung Hong, Grace Byun, Seungone Kim, and Kai Shu.
+\newblock Measuring sycophancy of language models in multi-turn dialogues.
+\newblock In {\em Findings of the Association for Computational Linguistics:
+  EMNLP 2025}, 2025.
+
+\bibitem{huang2024large}
+Jie Huang, Xinyun Chen, Swaroop Mishra, Huaixiu~Steven Zheng, Adams~Wei Yu,
+  Xinying Song, and Denny Zhou.
+\newblock Large language models cannot self-correct reasoning yet.
+\newblock In {\em The Twelfth International Conference on Learning
+  Representations}, 2024.
+
+\bibitem{ji2023survey}
+Ziwei Ji, Nayeon Lee, Rita Frieske, Tiezheng Yu, Dan Su, Yan Xu, Etsuko Ishii,
+  Yejin Bang, Andrea Madotto, and Pascale Fung.
+\newblock Survey of hallucination in natural language generation.
+\newblock {\em ACM Computing Surveys}, 55(12):1--38, 2023.
+
+\bibitem{jin2021disease}
+Di~Jin, Eileen Pan, Nassim Oufattole, Wei-Hung Weng, Hanyi Fang, and Peter
+  Szolovits.
+\newblock What disease does this patient have? a large-scale open domain
+  question answering dataset from medical exams.
+\newblock {\em Applied Sciences}, 11(14):6421, 2021.
+
+\bibitem{kalyan2021ammus}
+Katikapalli~Subramanyam Kalyan, Ajit Rajasekharan, and Sivanesan Sangeetha.
+\newblock Ammus: A survey of transformer-based pretrained models in natural
+  language processing.
+\newblock In {\em Proceedings of the 2021 Conference on Empirical Methods in
+  Natural Language Processing}, 2021.
+
+\bibitem{kaur-2025-echoes}
+Avneet Kaur.
+\newblock Echoes of agreement: Argument driven sycophancy in large language
+  models.
+\newblock In {\em Findings of the Association for Computational Linguistics:
+  EMNLP 2025}, pages 22803--22812, 2025.
+
+\bibitem{kim-etal-2026-doctor}
+Taeil~Matthew Kim et~al.
+\newblock The doctor will agree with you now: Sycophancy of large language
+  models in multi-turn medical conversations.
+\newblock In {\em Proceedings of the 1st Workshop on Linguistic Analysis for
+  Health (HeaLing 2026)}, pages 19--34, 2026.
+
+\bibitem{weng2022large}
+Takeshi Kojima, Shixiang~Shane Gu, Machel Reid, Yutaka Matsuo, and Yusuke
+  Iwasawa.
+\newblock Large language models are zero-shot reasoners.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  volume~35, pages 22199--22213, 2022.
+
+\bibitem{li2023camel}
+Guohao Li et~al.
+\newblock Camel: Communicative agents for "mind" exploration of large language
+  model society.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  volume~36, pages 51991--52008, 2023.
+
+\bibitem{li2026omac}
+Shijun Li, Hilaf Hasson, and Joydeep Ghosh.
+\newblock Omac: A holistic optimization framework for llm-based multi-agent
+  collaboration.
+\newblock In {\em International Conference on Machine Learning}, 2026.
+
+\bibitem{liang-etal-2024-encouraging}
+Tian Liang et~al.
+\newblock Encouraging divergent thinking in large language models through
+  multi-agent debate.
+\newblock In {\em Proceedings of the 2024 Conference on Empirical Methods in
+  Natural Language Processing}, pages 17889--17904, 2024.
+
+\bibitem{lightman2023let}
+Hunter Lightman, Vineet Kosaraju, Yura Burda, Harri Edwards, Bowen Baker, Teddy
+  Lee, Jan Leike, John Schulman, Ilya Sutskever, and Karl Cobbe.
+\newblock Let's verify step by step.
+\newblock In {\em The Twelfth International Conference on Learning
+  Representations}, 2023.
+
+\bibitem{lin2021truthfulqa}
+Stephanie Lin, Jacob Hilton, and Owain Evans.
+\newblock Truthfulqa: Measuring how models mimic human falsehoods.
+\newblock In {\em Proceedings of the 60th Annual Meeting of the Association for
+  Computational Linguistics}, 2022.
+
+\bibitem{liu2023pre}
+Pengfei Liu, Weizhe Yuan, Jinlan Fu, Zhengbao Jiang, Hiroaki Hayashi, and
+  Graham Neubig.
+\newblock Pre-train, prompt, and predict: A systematic survey of prompting
+  methods in natural language processing.
+\newblock In {\em ACM Computing Surveys}, volume~55, pages 1--35, 2023.
+
+\bibitem{madaan2023selfrefine}
+Aman Madaan et~al.
+\newblock Self-refine: Iterative refinement with self-feedback.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  volume~36, pages 46534--46594, 2023.
+
+\bibitem{manakul-etal-2023-selfcheckgpt}
+Potsawee Manakul, Adian Liusie, and Mark J.~F. Gales.
+\newblock Self{C}heck{GPT}: Zero-resource black-box hallucination detection for
+  generative large language models.
+\newblock In {\em Proceedings of the 2023 Conference on Empirical Methods in
+  Natural Language Processing}, pages 9004--9017, 2023.
+
+\bibitem{min2022rethinking}
+Sewon Min, Xinxi Lyu, Ari Holtzman, Yoav Artzi, Hannaneh Hajishirzi, and Luke
+  Zettlemoyer.
+\newblock Rethinking the role of demonstrations: What makes in-context learning
+  work?
+\newblock In {\em Proceedings of the 2022 Conference on Empirical Methods in
+  Natural Language Processing}, 2022.
+
+\bibitem{mishra2022cross}
+Swaroop Mishra, Daniel Khashabi, Chitta Baral, and Hajishirzi Hannaneh.
+\newblock Cross-task generalization via natural language crowdsourcing
+  instructions.
+\newblock In {\em Proceedings of the 60th Annual Meeting of the Association for
+  Computational Linguistics}, 2022.
+
+\bibitem{nye2021show}
+Maxwell Nye, Anders~Johan Andreassen, Guy Gur-Ari, Aitor Henry-Louis, David
+  McNeil, Dipanjan Pramanik, Shruti Rousseau, Krtin Simon, Google Brain, et~al.
+\newblock Show your work: Scratchpads for intermediate computation with
+  language models.
+\newblock {\em Deep Learning for Code Workshop, ICLR}, 2022.
+
+\bibitem{Ong2024}
+Jasmine Chiat~Ling Ong et~al.
+\newblock Medical ethics of large language models in medicine.
+\newblock {\em NEJM AI}, 1(7), 2024.
+
+\bibitem{ouyang2022training}
+Long Ouyang, Jeffrey Wu, Xu~Jiang, Diogo Almeida, Carroll Wainwright, Pamela
+  Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, et~al.
+\newblock Training language models to follow instructions with human feedback.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  volume~35, pages 27730--27744, 2022.
+
+\bibitem{pan2024reward}
+Richard Pan et~al.
+\newblock Reward gaming in conditional text generation.
+\newblock In {\em The Twelfth International Conference on Learning
+  Representations}, 2024.
+
+\bibitem{peng2023instruction}
+Baolin Peng, Chunyuan Li, Pengcheng He, Michel Galley, and Jianfeng Gao.
+\newblock Instruction tuning with gpt-4.
+\newblock {\em arXiv preprint arXiv:2304.03277}, 2023.
+\newblock Significant contribution to alignment theory.
+
+\bibitem{perez-etal-2023-discovering}
+Ethan Perez et~al.
+\newblock Discovering language model behaviors with model-written evaluations.
+\newblock In {\em Findings of the Association for Computational Linguistics:
+  ACL 2023}, pages 13387--13434, 2023.
+
+\bibitem{perez2022discovering}
+Ethan Perez, Sam Ringer, Kamil{\.e} Luko{\v{s}}i{\=u}t{\.e}, Karina Nguyen,
+  Edwin Chen, Scott Heiner, Craig Pettit, Catherine Olsson, Sandipan Kundu,
+  Saurav Kadavath, et~al.
+\newblock Discovering language model behaviors with model-written evaluations.
+\newblock In {\em Findings of the Association for Computational Linguistics:
+  ACL 2023}, 2023.
+
+\bibitem{radford2019language}
+Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, Ilya
+  Sutskever, et~al.
+\newblock Language models are unsupervised multitask learners.
+\newblock {\em OpenAI blog}, 1(8):9, 2019.
+
+\bibitem{saunders2022self}
+William Saunders, Catherine Yeh, Jeff Wu, Steven Bills, Long Ouyang, Jonathan
+  Ward, and Owain Evans.
+\newblock Self-critiquing models for assisting human evaluators.
+\newblock {\em arXiv preprint arXiv:2206.05802}, 2022.
+\newblock Foundational OpenAI paper on self-critique limits.
+
+\bibitem{sharma2024towards}
+Mrinank Sharma et~al.
+\newblock Towards understanding sycophancy in language models.
+\newblock In {\em The Twelfth International Conference on Learning
+  Representations}, 2024.
+
+\bibitem{shinn2023reflexion}
+Noah Shinn, Federico Cassano, Ashwin Gopinath, Karthik Narasimhan, and Shunyu
+  Yao.
+\newblock Reflexion: Language agents with verbal reinforcement learning.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  volume~36, pages 6718--6735, 2023.
+
+\bibitem{singhal2023large}
+Karan Singhal et~al.
+\newblock Large language models encode clinical knowledge.
+\newblock {\em Nature}, 620:172--180, 2023.
+
+\bibitem{singhal2023towards}
+Karan Singhal et~al.
+\newblock Towards expert-level medical question answering with large language
+  models.
+\newblock {\em Nature}, 620:172--180, 2023.
+
+\bibitem{srivastava2022beyond}
+Aarohi Srivastava, Abhinav Rastogi, Abhishek Rao, Abu Awal~Md Shoeb, Abubakar
+  Abid, Adam Fisch, Adam~R Brown, Adam Santoro, Aditya Gupta, Adri{\`a}
+  Garriga-Alonso, et~al.
+\newblock Beyond the imitation game: Quantifying and extrapolating the
+  capabilities of language models.
+\newblock {\em Transactions on Machine Learning Research}, 2023.
+
+\bibitem{ting2023large}
+Daniel S~W Ting et~al.
+\newblock Large language models in medicine.
+\newblock {\em Nature Medicine}, 29(8):1925--1927, 2023.
+
+\bibitem{touvron2023llama}
+Hugo Touvron, Louis Martin, Kevin Stone, Peter Albert, Amjad Almahairi, Yasmine
+  Babaei, Nikolay Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti Bhosale,
+  et~al.
+\newblock Llama 2: Open foundation and fine-tuned chat models.
+\newblock In {\em Advances in Neural Information Processing Systems}, 2023.
+
+\bibitem{wang2022self}
+Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed~Chi, Sharan Narang,
+  Aakanksha Chowdhery, and Denny Dai.
+\newblock Self-consistency improves chain of thought reasoning in language
+  models.
+\newblock In {\em The Eleventh International Conference on Learning
+  Representations}, 2022.
+
+\bibitem{wei2024simple}
+Jerry Wei, Da~Huang, Yifeng Lu, Denny Zhou, and Quoc~V Le.
+\newblock Simple synthetic data reduces sycophancy in large language models.
+\newblock In {\em Proceedings of the 12th International Conference on Learning
+  Representations}, 2024.
+
+\bibitem{xu2023survey}
+Yating Xu et~al.
+\newblock A survey on legal judgment prediction: Datasets, metrics, models and
+  challenges.
+\newblock In {\em Proceedings of the 2023 Conference on Empirical Methods in
+  Natural Language Processing}, 2023.
+
+\bibitem{zhang2025sirens}
+Yue Zhang et~al.
+\newblock Siren's song in the ai ocean: A survey on hallucination in large
+  language models.
+\newblock {\em Computational Linguistics}, 51(4):1373--1418, 2025.
+
+\bibitem{zhao2023survey}
+Wayne~Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou,
+  Yingqian Min, Beichen Zhang, Junjie Zhang, Zican Dong, et~al.
+\newblock A survey of large language models.
+\newblock In {\em ACM Computing Surveys}, 2023.
+
+\bibitem{zheng2023judging}
+Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Hao, Zhanghao Wu, Joseph~E
+  Ba, Xiaoyan Zhuang, Zi~Lin, Zhuohan Li, Eric Xing, et~al.
+\newblock Judging llm-as-a-judge with mt-bench and chatbot arena.
+\newblock In {\em Advances in Neural Information Processing Systems}, 2023.
+
+\bibitem{zhou2022least}
+Denny Zhou, Nathanael Sch{\"a}rli, Le~Hou, Jason Wei, Nathan Scales, Xuezhi
+  Wang, Dale Schuurmans, Claire Cui, Olivier Bousquet, and Quoc Le.
+\newblock Least-to-most prompting enables complex reasoning in large language
+  models.
+\newblock In {\em The Eleventh International Conference on Learning
+  Representations}, 2023.
+
+\end{thebibliography}

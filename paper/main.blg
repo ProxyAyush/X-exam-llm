@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2025/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: plain.bst
+Database file #1: high_quality_refs.bib
+Warning--I didn't find a database entry for "wei2022chain"
+Warning--can't use both volume and number fields in liu2023pre
+You've used 55 entries,
+            2118 wiz_defined-function locations,
+            738 strings with 15521 characters,
+and the built_in function-call counts, 24178 in all, are:
+= -- 2146
+> -- 1693
+< -- 22
++ -- 670
+- -- 612
+* -- 1796
+:= -- 4007
+add.period$ -- 169
+call.type$ -- 55
+change.case$ -- 440
+chr.to.int$ -- 0
+cite$ -- 56
+duplicate$ -- 863
+empty$ -- 1654
+format.name$ -- 612
+if$ -- 4985
+int.to.chr$ -- 0
+int.to.str$ -- 55
+missing$ -- 55
+newline$ -- 282
+num.names$ -- 110
+pop$ -- 551
+preamble$ -- 1
+purify$ -- 385
+quote$ -- 0
+skip$ -- 659
+stack$ -- 0
+substring$ -- 993
+swap$ -- 253
+text.length$ -- 22
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 220
+warning$ -- 1
+while$ -- 163
+width$ -- 57
+write$ -- 591
+(There were 2 warnings)

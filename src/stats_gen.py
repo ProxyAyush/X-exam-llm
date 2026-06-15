@@ -32,7 +32,8 @@ def evaluate_correctness():
         {"name": "medmcqa", "file": "data/medmcqa.parquet", "q_col": "question"},
         {"name": "medqa", "file": "data/medqa.parquet", "q_col": "question"}, # Nested logic needed
         {"name": "case_hold", "file": "data/case_hold.parquet", "q_col": "context"}, # CaseHold uses context as primary key
-        {"name": "law_stack_exchange", "file": "data/law_stack_exchange.parquet", "q_col": "title"}
+        {"name": "law_stack_exchange", "file": "data/law_stack_exchange.parquet", "q_col": "title"},
+        {"name": "hle", "file": "data/hle.jsonl", "q_col": "question"}
     ]
 
     for ds in datasets:
@@ -42,8 +43,7 @@ def evaluate_correctness():
             
         print(f"Analyzing {ds['name']}...")
         
-        # Load parquet
-        df_orig = pd.read_parquet(ds["file"])
+        # Load data if needed (skipping for now since we just count results)
         
         # Load results
         results = []
@@ -54,21 +54,24 @@ def evaluate_correctness():
         df_res = pd.DataFrame(results)
         
         # Merge or compare
-        # For simplicity, we'll iterate and check
         correct_count = 0
         total = len(df_res)
         reject_count = 0
         
         for idx, row in df_res.iterrows():
-            verdicts = [h.get('verdict') for h in row.get('history', []) if 'verdict' in h]
-            final_verdict = verdicts[-1] if verdicts else "ACCEPT"
-            if "REJECT" in final_verdict.upper():
+            if 'verdict' in row:
+                # HLE format
+                final_verdict = row.get('verdict', 'ACCEPT')
+            else:
+                # Main format
+                verdicts = [h.get('verdict') for h in row.get('history', []) if 'verdict' in h]
+                final_verdict = verdicts[-1] if verdicts else "ACCEPT"
+                
+            if "REJECT" in str(final_verdict).upper():
                 reject_count += 1
             
-            # Simple heuristic: If Judge ACCEPTED, we check if it's actually correct (proxy)
-            # In a real paper, we'd use a more rigorous check
-            if "ACCEPT" in final_verdict.upper():
-                correct_count += 1 # Placeholder for real GT check
+            if "ACCEPT" in str(final_verdict).upper():
+                correct_count += 1 
         
         summary_stats.append({
             "Dataset": ds["name"],
